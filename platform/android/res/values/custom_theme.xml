@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CustomActionBar" parent="@style/Theme.AppCompat.NoTitleBar">        
+    <item name="colorPrimary">#333333</item>
+    <item name="colorPrimaryDark">#333333</item>
+    <!--
+    <item name="colorAccent">#FF80AB</item>
+    <item name="colorControlNormal">#757575</item>
+    <item name="colorControlActivated">#FF6E40</item>
+    <item name="colorControlHighlight">#FF4081</item>
+    <item name="colorSwitchThumbNormal">#BDBDBD</item>
+    <item name="android:colorButtonNormal">#BDBDBD</item>
+    <item name="android:colorEdgeEffect">#FF4081</item>        
+    -->
+    <item name="android:navigationBarColor">#333333</item>
+    </style>
+ </resources> 
