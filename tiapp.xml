@@ -4,8 +4,8 @@
     <name>Mi Doc</name>
     <version>1.0</version>
     <publisher>oswaldotobonaguilar</publisher>
-    <url/>
-    <description/>
+    <url>http://www.geainternacional.com</url>
+    <description>App para solicitar asistencias</description>
     <copyright>2020 by oswaldotobonaguilar</copyright>
     <icon>appicon.png</icon>
     <fullscreen>true</fullscreen>
@@ -15,7 +15,8 @@
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
-        <enable-launch-screen-storyboard>false</enable-launch-screen-storyboard>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <default-background-color>#cedff7</default-background-color>
         <use-app-thinning>true</use-app-thinning>
         <plist>
             <dict>
@@ -64,27 +65,36 @@
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
       <manifest android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android"/>
-					      <uses-sdk android:minSdkVersion="19"/>
+					      <uses-sdk android:minSdkVersion="1"/>
 					      <uses-permission android:name="android.permission.CAMERA"/>
-					      <uses-permission android:name="android.permission.CALL_PHONE"/>
-					      <uses-permission android:name="android.permission.INTERNET"/>
-					      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-					      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-					      <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-					      <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-					      <application android:theme="@style/Theme.CustomActionBar"/>
-											</application>
+            <uses-permission android:name="android.permission.CALL_PHONE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>            
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+            <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+											<application android:theme="@style/Theme.CustomActionBar">
+                <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA0yvLNAcVGuicnMUZYvfVYOBMQUmyDcGg"/>
+               	<meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
+               	<meta-data android:name="google_analytics_adid_collection_enabled" android:value="false"/>                
+               	<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notificationicon"/>
+            </application>
        </manifest>
     </android>
   <modules>
     <module platform="iphone">ti.webdialog</module>
+    <module platform="iphone">firebase.core</module>
+    <module platform="iphone">firebase.cloudmessaging</module>
     <module platform="android">ti.webdialog</module>
+    <module platform="android">firebase.core</module>
+    <module platform="android">firebase.cloudmessaging</module>
   </modules>
     <deployment-targets>
         <target device="android">true</target>
         <target device="ipad">false</target>
         <target device="iphone">true</target>
     </deployment-targets>
-    <sdk-version>9.0.3.GA</sdk-version>
+    <sdk-version>9.0.1.GA</sdk-version>
     <property name="appc-app-id" type="string">5f34dbb2535a542b36187f32</property>
 </ti:app>
