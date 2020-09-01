@@ -192,7 +192,7 @@ function Agregar_Vehiculo( win, agregar, datos ){
 //
 function DescargarVehiculosDeServidor(win, tablaDatos) {
  
- tablaDatos.setData( [] );
+ tablaDatos.data = [];
  
  var query = "SELECT * FROM vehiculos ";
  var rows = Ti.App.db.execute(query);

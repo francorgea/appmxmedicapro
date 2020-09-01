@@ -41,19 +41,19 @@ function CargarOpciones( listado, data, win, arreglo, Combo ){
          }
          catch(e){
            Utiles.Alerta("Imposible descargar las previsiones");
-           listado.setData([]);            
+           listado.data = [];            
          }
          var arreglo = json;
          for(x=0;x<arreglo.length;x++){
             Agregarprevision( x, arreglo, data, Combo );              
          }
          preloader.hide(win);
-         listado.setData(data);
+         listado.data = data;
      },
      
      onerror : function(e) {
          Utiles.Alerta("No se pudieron descargar las previsiones");
-         listado.setData([]);
+         listado.data = [];
      },
      timeout : 15000  
  });

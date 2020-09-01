@@ -32,7 +32,7 @@ function datos(win,informacion,winChat) {
        }
        catch(e){        
          preloader.hide(win);
-         gridAsistencias.setData([]);
+         gridAsistencias.data = [];
          Utiles.Alerta( "Error grave al conectar con el servidor" );
          return false;         
        }      
@@ -47,7 +47,7 @@ function datos(win,informacion,winChat) {
        }
        catch(e){
          preloader.hide(win);
-         gridAsistencias.setData([]);
+         gridAsistencias.data = [];
          win.backgroundImage = "/images/error_servidor.png";
          Utiles.Alerta( "Error grave al conectar con el servidor" );
          return false;         
@@ -171,7 +171,7 @@ function DescargarAvances( win, contenedor, siniestro ){
        }
        catch(e){        
          preloader.hide(win);
-         gridAsistencias.setData([]);
+         gridAsistencias.data = [];
          Utiles.Alerta( "Error grave al conectar con el servidor" );
          return false;         
        }      
@@ -186,7 +186,7 @@ function DescargarAvances( win, contenedor, siniestro ){
        }
        catch(e){
          preloader.hide(win);
-         gridAsistencias.setData([]);
+         gridAsistencias.data = [];
          Utiles.Alerta( "Error grave al conectar con el servidor" );
          return false;         
        };
@@ -250,7 +250,7 @@ function VerificarImagenes( win, siniestro, avance ){
        }
        catch(e){        
          preloader.hide(win);
-         gridAsistencias.setData([]);
+         gridAsistencias.data = [];
          Utiles.Alerta( "Error grave al conectar con el servidor" );
          return false;         
        }      
@@ -265,7 +265,7 @@ function VerificarImagenes( win, siniestro, avance ){
        }
        catch(e){
          preloader.hide(win);
-         gridAsistencias.setData([]);
+         gridAsistencias.data = [];
          Utiles.Alerta( "Error grave al conectar con el servidor" );
          return false;         
        };

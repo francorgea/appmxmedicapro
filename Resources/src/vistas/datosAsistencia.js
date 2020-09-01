@@ -348,11 +348,14 @@ function Proceso_Cancelacion_Asistencia( win, expediente, winChat ) {
   preloader.show(win);
   var peticionHTTP = Ti.Network.createHTTPClient();
   peticionHTTP.onerror = function() {
+	  			var responseText = this.responseText;
+	  			Ti.API.info("Respuesta onerror: " + responseText);
+	  			preloader.hide(win);
       Utiles.Alerta( "Error de comunicación con el servidor, por favor intentá mas tarde. \r\r");
   };
   peticionHTTP.onload =  function()  {
      var responseText = this.responseText;
-     Ti.API.info('*** Respuesta: ' +  this.responseText + " = " + responseText );  
+     Ti.API.info('*** Respuesta de cancelacion: ' +  this.responseText + " = " + responseText );  
      if ( Utiles.Left(responseText,5) == "ERROR") {
         preloader.hide(win);
         Utiles.Alerta( "Ha ocurrido un error al intentar cancelar la asistencia..");

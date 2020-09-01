@@ -49,7 +49,7 @@ function GenericWindowSolicitar( cerrar, textoTitulo, imagen ) {
 
 	// Colocar el titulo
 	if(cerrar=="S"){
- 	 var vistaCerrar = Ti.UI.createImageView({ left: 8,  width: 20, height: 20, image:  "/images/btnRegresar.png" });
+ 	 var vistaCerrar = Ti.UI.createImageView({ left: 8,  width: 30, height: 30, image:  "/images/btnRegresar.png" });
  	 vistaCerrar.addEventListener("click", function(){ self.close({animate:true}); });
  	 barraTitulo.add(vistaCerrar); 
 	}

@@ -1,31 +1,31 @@
 
 // Variables Varias 
-exports.sistema_BD  = "sefcm";
+exports.sistema_BD  = "MiDoc";
 exports.desarrollo  = "production"; // production // sandbox
-exports.app_name    = "Sala de Emergencia";
+exports.app_name    = "Mi Doc";
 exports.app_version = "1.0.0"; 
-exports.pref        = "SE_FCM"; 
+exports.pref        = "MiDoc"; 
 exports.br          = "\n";
-exports.piloto      = "+56228203386";
+exports.piloto      = "+525575907434";
 exports.isAndroid   =  ( Ti.Platform.osname=="android" ) ? true : false;
 exports.iPhoneX     =  ( (Ti.Platform.osname!="android" && Ti.Platform.displayCaps.platformWidth == 375 && Ti.Platform.displayCaps.platformHeight == 812) || (Ti.Platform.osname!="android" && Ti.Platform.displayCaps.platformWidth == 414 && Ti.Platform.displayCaps.platformHeight == 896 )  ) ? true : false;
 
 // CUENTA SIGA
-exports.cuenta_siga = 'PEM';
+exports.cuenta_siga = 'ONE';
 
 // AIzaSyCRn0aee1T-vyinfNnWYaVx4DH-KhYwNIs
 
 // Definimos los colores
 exports.color0  = "black"  ;  // Negro
 exports.color1  = "#00468a";  // Azul botones emergencias
-exports.color2  = "#fc0e5d";  // Rosachillante
+exports.color2  = "#84c335";  // verde
 exports.color3  = "#99bdf4";  // Gris obscuro botones inferiores 
 exports.color4  = "#FFFD38";  // Amarillo
 exports.color5  = "#E51066";  // Rosa
 exports.color6  = "#A4A09D";  // Gris Fuerte
 exports.color7  = "white"  ;  // Blanco 
 exports.color8  = "#ff0000";  // Rojo
-exports.color9  = "#008000";  // Verde
+exports.color9  = "#6b9ae7";  // Azul opaco botones inferiores
 exports.color10 = '#f1f1f1';  // Gris Claro
 exports.color11 = '#a4a09d';  // Gris textos   
 exports.color12 = '#f3f3f3';  // Gris fondo textos  
@@ -57,14 +57,17 @@ exports.sonido_soltar = "pop2.wav";
 // email y links
 exports.email_contacto   = "sistemas_mobile@geainternacional.com";
 exports.pagina_web       = "http://www.geainternacional.com";
-exports.pagina_tyc       = "http://www.geainternacional.com/cl/se_fcm/tyc.html";
+exports.pagina_tyc       = "https://www.geainternacional.com/cl/se_fcm/tyc.html";
 exports.pagina_pp        = "http://www.geainternacional.com/cl/se_fcm/pp.html";
 
 
 // URL de Servicios
-exports.URLsiga        = "http://mobilecl.geainternacional.com:9936/siga/asistenciamovil/generaExpediente.php";
-exports.URLmobile      = "http://push.geainternacional.com:9936/siga/srvPUSH/apns.php";
+exports.URLsiga        = "http://mobilemx.geainternacional.com:9936/siga/asistenciamovil/generaExpediente.php";
+exports.URLmobile      = "http://mobilemx.geainternacional.com:9936/siga/asistenciamovil/resgistraDispositivo.php";
 
+//e-Doctor
+exports.URLedoctorANDROID = "https://play.google.com/store/apps/details?id=videoconference.geainternacional.com.telemedicina";
+exports.URLedoctorIOS     = "https://itunes.apple.com/us/app/e-doctor/id1147856481?ls=1&mt=8";
 
 // Tipografias
 exports.fuente_primaria    = ( Ti.Platform.osname=='android' ) ? "OpenSans-Regular"    : "Open Sans";

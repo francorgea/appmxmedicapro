@@ -10,7 +10,7 @@ function Button(texto,color,ancho) {
      font: { fontFamily: params.fuente_montserrat, fontSize: 14 },
      color: params.color7,
      width: ancho,
-     height: '33dp'
+     height: '27dp'
  });
  
 

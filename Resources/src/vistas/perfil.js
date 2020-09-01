@@ -335,6 +335,9 @@ function MostrarDatos(win,json){
          win.close();
          Utiles.Alerta("Sesión concluida");
     })
+    
+    Utiles.registrarEnServidor( 'xxx' );
+    
     if(json.firmado=="S"){
       contenedor.add(btnCerrarSesion);
     }

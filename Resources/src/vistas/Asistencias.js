@@ -3,8 +3,8 @@ function Asistencias() {
  
   var BotonListado = require("src/common/BotonListado");
   
-  var Ambulancia   = require("src/common/asistenciaAmbulancia");
-  var Emergencia   = require("src/common/asistenciaEmergencia");
+//  var Ambulancia   = require("src/common/asistenciaAmbulancia");
+//  var Emergencia   = require("src/common/asistenciaEmergencia");
   var Button = require("/src/common/Button");
  
   var contenedor = Ti.UI.createView({
@@ -14,14 +14,120 @@ function Asistencias() {
       backgroundImage: '/images/fondos/fondo.png'
   });  
   
-  var contieneLogoMenu = Ti.UI.createView({
-      top: 0,
-      width: Ti.UI.FILL,
-      height: '100%',
-      layout: 'vertical',
+  var logo = Ti.UI.createImageView({
+	  			image: 'images/logo.png',
+	  			height: '15%',
+	  			width: '25%',
+	  			top: '5%',
+	  			right: 15
+  });
+  contenedor.add(logo);
+  
+  var scrollBotones = Ti.UI.createScrollView({
+	     top: '52%',
+	     height: Ti.UI.FILL,
+	     width: Ti.UI.FILL,
+  });
+  contenedor.add(scrollBotones);
+
+  var contenedorBotones = Ti.UI.createView({
+	  			width: Ti.UI.FILL,
+	  			height: Ti.UI.SIZE,
+	  			layout: "vertical",
+//	  			borderColor: "blue"
   });
   
-  if(params.iPhoneX){
+  //Boton Medica
+		var btnMedica = new Button("ASISTENCIA MÉDICA",params.color1,'80%');    
+  btnMedica.addEventListener("click", function(){
+	     var asistencia =  require("/src/common/asistenciaMedica");
+      PedirAsistencia( "Asistencia Médica", "/images/icoMedica.png", asistencia.servicios(), false  );
+  });
+  contenedorBotones.add(btnMedica);
+  contenedorBotones.add(Ti.UI.createView( {height:10} ));
+  
+  //Boton Dental
+		var btnDental = new Button("ASISTENCIA DENTAL",params.color1,'80%');    
+  btnDental.addEventListener("click", function(){
+      var asistencia =  require("/src/common/asistenciaDental");
+      PedirAsistencia( "Asistencia Dental", "/images/icoDental.png", asistencia.servicios(), false  );
+  });
+  contenedorBotones.add(btnDental);
+  contenedorBotones.add(Ti.UI.createView( {height:10} ));
+  
+  //Boton Optica
+  var btnOptica = new Button("ASISTENCIA ÓPTICA",params.color1,'80%');    
+  btnOptica.addEventListener("click", function(){
+	  			var asistencia =  require("/src/common/asistenciaOptica");
+      PedirAsistencia( "Asistencia Optica", "/images/icoOptica.png", asistencia.servicios(), false  );
+  });
+  contenedorBotones.add(btnOptica);
+  contenedorBotones.add(Ti.UI.createView( {height:10} ));
+  
+  //Boton Veterinaria
+  var btnVeterinaria = new Button("ASISTENCIA VETERINARIA",params.color1,'80%');    
+  btnVeterinaria.addEventListener("click", function(){
+	  		 var asistencia =  require("/src/common/asistenciaVeterinaria");
+      PedirAsistencia( "Asistencia Veterinaria", "/images/icoVeterinaria.png", asistencia.servicios(), false  );
+  });
+  contenedorBotones.add(btnVeterinaria);
+  contenedorBotones.add(Ti.UI.createView( {height:10} ));
+  
+  //Boton Funeraria
+  var btnFuneraria = new Button("ASISTENCIA FUNERARIA",params.color1,'80%');    
+  btnFuneraria.addEventListener("click", function(){
+	  			var asistencia =  require("/src/common/asistenciaFuneraria");
+      PedirAsistencia( "Asistencia Funeraria", "/images/icoFuneraria.png", asistencia.servicios(), false  );
+  });
+  contenedorBotones.add(btnFuneraria);
+  contenedorBotones.add(Ti.UI.createView( {height:10} ));  
+  
+  //Boton Funeraria
+  var btneDoctor = new Button("e-Doctor",params.color1,'80%');    
+  btneDoctor.addEventListener("click", function(){
+      var edoctorgea = "edoctorgea://";
+       if(params.isAndroid){
+           try{
+               var intent = Ti.Android.createIntent({
+                   action: Ti.Android.ACTION_MAIN,
+                   className: "videoconference.geainternacional.com.telemedicina.activities.PresentacionActivity",
+                   packageName: "videoconference.geainternacional.com.telemedicina",
+               });
+               intent.addCategory(Ti.Android.CATEGORY_LAUNCHER);
+               intent.setFlags(Ti.Android.FLAG_ACTIVITY_NEW_TASK);
+               Ti.Android.currentActivity.startActivity(intent);    
+           }    
+           catch(e){
+               Titanium.Platform.openURL(params.URLedoctorANDROID);              
+           }             
+       }
+       else{
+	       		Titanium.Platform.openURL(params.URLedoctorIOS);
+/*	       		 
+          try{
+            var resultado = Titanium.Platform.openURL(edoctorgea);
+            Ti.API.info("*** Resultado de lanzar: " + resultado );
+            if(!resultado){
+              Titanium.Platform.openURL(params.URLedoctorIOS);  
+            }
+          }
+          catch(e){
+            Ti.API.info("*** No se pudo conectar");
+            Titanium.Platform.openURL(params.URLedoctorIOS);
+          }
+*/        
+       }
+  });
+  contenedorBotones.add(btneDoctor);
+  
+  scrollBotones.add(contenedorBotones);
+    
+  return contenedor;
+}
+module.exports = Asistencias;
+
+/*
+if(params.iPhoneX){
     contieneLogoMenu.add(Ti.UI.createView({height:30}));
   }
 
@@ -42,47 +148,15 @@ function Asistencias() {
 		var largoBtn = '56%';
 		//Espacio	Principal
   contieneLogoMenu.add(espacioAlto);
-		//Boton Medica
-		var btnMedica = new Button("ASISTENCIA MÉDICA",params.color1,largoBtn);    
-  btnMedica.addEventListener("click", function(){
-      PedirAsistencia( "Asistencia Médica", "/images/icoMedica.png", 'MEDICA', true  );
-  });
+		
   contieneLogoMenu.add(btnMedica);
 		contieneLogoMenu.add(espacioMini);
-		//Boton Dental
-		var btnDental = new Button("ASISTENCIA DENTAL",params.color1,largoBtn);    
-  btnDental.addEventListener("click", function(){
-      PedirAsistencia( "Asistencia Dental", "/images/icoDental.png", 'DENTAL', true  );
-  });
-  contieneLogoMenu.add(btnDental);
-  contieneLogoMenu.add(espacioMini);
-  //Boton Optica
-  var btnOptica = new Button("ASISTENCIA ÓPTICA",params.color1,largoBtn);    
-  btnOptica.addEventListener("click", function(){
-      PedirAsistencia( "Asistencia Optica", "/images/icoOptica.png", 'OPTICA', true  );
-  });
-  contieneLogoMenu.add(btnOptica);
-  contieneLogoMenu.add(espacioMini);
-  //Boton Veterinaria
-  var btnVeterinaria = new Button("ASISTENCIA VETERINARIA",params.color1,largoBtn);    
-  btnVeterinaria.addEventListener("click", function(){
-      PedirAsistencia( "Asistencia Veterinaria", "/images/icoVeterinaria.png", 'VETERINARIA', true  );
-  });
-  contieneLogoMenu.add(btnVeterinaria);
-  contieneLogoMenu.add(espacioMini);
-  //Boton Funeraria
-  var btnFuneraria = new Button("ASISTENCIA FUNERARIA",params.color1,largoBtn);    
-  btnFuneraria.addEventListener("click", function(){
-      PedirAsistencia( "Asistencia Funeraria", "/images/icoVeterinaria.png", 'FUNERARIA', true  );
-  });
-  contieneLogoMenu.add(btnFuneraria);
+		
   contieneLogoMenu.add(espacioMini);
   
-  return contenedor;
-}
-module.exports = Asistencias;
-
-
+  contieneLogoMenu.add(espacioMini);
+	
+	*/
 
 
 //

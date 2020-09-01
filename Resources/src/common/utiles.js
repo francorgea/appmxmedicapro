@@ -180,28 +180,6 @@ exports.Enc = function( valor ) {
 exports.Dec = function( valor ) {
    return valor;
 }
-// ============================================================================================================
-// Function   : 
-// Parametros :
-// Descripcion: 
-// ============================================================================================================
-exports.leer_enlace_siga = function() {
-  return leer_enlace_siga()
-}
-function leer_enlace_siga(){
-   var enlace = "http://187.188.107.45:9936/siga/asistenciamovil/generaExpediente.php";
-   return enlace;
-}
-//
-//
-//
-exports.leer_enlace_appmedicina = function() {
-  return leer_enlace_appmedicina();
-}
-function leer_enlace_appmedicina(){
-  var enlace = "http://187.188.107.45:9936/siga/asistenciamovil/appMedicinas.php";
-  return enlace;
-}
 //
 //
 //
@@ -235,9 +213,11 @@ function obtener_id() {
 // ==========================================================================================================
 exports.registrarEnServidor = function(deviceToken){ 
    var servidor = params.URLmobile;
-   var enlace = servidor + "?task=register&appname="+params.pref+"&appversion="+params.app_version+"&deviceuid="+Utiles.obtener_id()+"&";
+   var enlace = servidor + "?appname="+params.pref+"&appversion="+params.app_version+"&deviceuid="+Utiles.obtener_id()+"&";
    enlace = enlace + "devicetoken="+deviceToken+"&devicename="+Titanium.Platform.name+"&devicemodel="+Titanium.Platform.model+"&";
-   enlace = enlace + "deviceversion="+Titanium.Platform.version+"&pushbadge=enabled&pushalert=enabled&pushsound=enabled&pref="+params.pref+"&desarrollo="+params.desarrollo; 
+   enlace = enlace +	"cveafiliado="+Utiles.obtenerOpcion('cedula')+"&cuenta="+Utiles.obtenerOpcion("cuenta_siga")+"&";   
+   enlace = enlace + "deviceversion="+Titanium.Platform.version; 
+   Ti.API.info("Enlace del token: ------------>"+enlace);
    var peticionHTTP = Ti.Network.createHTTPClient();
    peticionHTTP.onerror = function(e) {
        Utiles.grabarOpcion( "servidorPush1", e.error );
@@ -339,21 +319,6 @@ exports.isValidDate = function(value, userFormat) {
 
   return isDate(theDate, theFormat);
 
-}
-//
-//
-//
-exports.sePuedePonerPin = function(){
-  if(Ti.Platform.osname=='android') {
-     var version = Titanium.Platform.version;
-     var maxver  = version.split(".");
-     maxver = parseInt(maxver);
-     if(maxver==6){
-       return false;
-     }
-     return true;
-  } 
-  return true;
 }
 // ============================================================================================================
 // Function   : getLocation

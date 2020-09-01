@@ -92,7 +92,7 @@ function Chat(win,expediente,datos){
     txtMensaje.addEventListener("return",function(){
        if( txtMensaje.value != "" ) {
         Enviar_Mensaje( txtMensaje.value, expediente );
-        txtMensaje.setValue('');
+        txtMensaje.value = '';
        }  
     });    
     scroll.add(txtMensaje);

@@ -150,7 +150,7 @@ function SolicitarMuestraVentana(win, tituloAsistencia, arregloOpciones, EsAsist
     Utiles.grabarOpcion("plan_siga",plan_siga);
     var ComboServicios = new ComboVista( 'Servicio:', '90%', arregloOpciones[0].servicio );
     ComboServicios.view.addEventListener("click", function(){
-       var winServicios = new GenericWindow( "S", "Seleccione su Estado" ) ;
+       var winServicios = new GenericWindow( "S", "Seleccione su servicio" ) ;
    	   var vistaServicios = require("src/common/seleccionarServicio");
    	   vistaServicios.CargarListado( winServicios, arregloOpciones , ComboServicios )  ;
        winServicios.open();     

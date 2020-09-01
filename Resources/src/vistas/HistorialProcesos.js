@@ -8,14 +8,14 @@ var Actualizar = function() {
                   
          preloader.show(contenedorHistoria);
                   
-         gridAsistencias.setData( [] );
+         gridAsistencias.data = [];
          
          var peticionHTTP = Ti.Network.createHTTPClient();
          peticionHTTP.onerror = function(e)   {
              var resultado = this.responseText;
              Ti.API.info("*** ERROR: " + resultado );
              Utiles.Alerta( "Error de comunicación con el servidor, por favor intenta mas tarde. \n\n" +   + e.error );
-             gridAsistencias.setData(  []  );
+             gridAsistencias.data = [];
              Ti.App.Properties.setString('ActualizarListadoAsistencias','N');
              preloader.hide(contenedorHistoria);
          };
@@ -26,15 +26,15 @@ var Actualizar = function() {
                //Ti.App.db.execute("DELETE FROM historico_asistencias"); 
                // Ti.App.db.execute("DELETE FROM llegada_push"); 
                Ti.API.info("No hay registros por procesar..");
-               gridAsistencias.setData( [] );
+               gridAsistencias.data = [];
                Ti.App.Properties.setString('ActualizarListadoAsistencias','N');
                preloader.hide(contenedorHistoria);
                return false;
             }
             if( Utiles.Left(this.responseText,5) == "ERROR" ) {
                preloader.hide(contenedorHistoria);
-               Utiles.Mensaje( win, "No se ha podido accesar al servidor, por favor intentá mas tarde. \r\r" + "Se mostrarán los datos almacenados en el dispositivo.");
-               gridAsistencias.setData(  construir_arreglo_asistencias()  );
+               Utiles.Alerta("No se ha podido accesar al servidor, por favor intentá mas tarde. \r\r");
+               gridAsistencias.data =  [];
                Ti.App.Properties.setString('ActualizarListadoAsistencias','N');               
                return false;
             }     
@@ -45,13 +45,13 @@ var Actualizar = function() {
       		        var pos;  
                   if(json.length>0){
                      contenedorHistoria.backgroundImage = "/images/fondos/fondo.png";
-                     gridAsistencias.setData([]);
+                     gridAsistencias.data = [];
                      for(x=0;x<json.length;x++){
                         gridAsistencias.appendRow( agregarRegistro(contenedorHistoria, gridAsistencias, json, x, 'white' ) );
                      }         
                   }
                   else{
-                     gridAsistencias.setData([]);
+                     gridAsistencias.data = [];
                      contenedorHistoria.backgroundImage = "/images/sinasistencias.png";
                   }
                   preloader.hide(contenedorHistoria);
@@ -67,6 +67,7 @@ var Actualizar = function() {
                 dsp: Utiles.obtener_id(),
                 dos: Titanium.Platform.name,
                 ced: Utiles.obtenerOpcion('cedula'),
+                cta: params.cuenta_siga,
                 bdg: 0,
                 test:1
          };  
@@ -244,63 +245,3 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
    return renglon;
  
 }
-
-
-/*
-  Ti.API.info("*** Actualizando historial de asistencias..");
-  preloader.show(contenedorHistoria);
-  var peticionHTTP = Ti.Network.createHTTPClient({ timeout: 30000 });
-  peticionHTTP.onerror = function(e) {   
-      contenedorHistoria.backgroundImage = "/images/error_servidor.png";
-      var resultado = this.responseText;
-      try{
-        var json = JSON.parse(unescape(resultado));
-      }
-      catch(e){        
-        preloader.hide(contenedorHistoria);
-        gridAsistencias.setData([]);
-        Utiles.Alerta( "Error grave al conectar con el servidor" );
-        return false;         
-      }      
-      preloader.hide(contenedorHistoria);     
-      Utiles.Alerta( json.noticias );
-  };
-  peticionHTTP.onload =  function() {
-      var resultado = this.responseText;
-      preloader.hide(contenedorHistoria);
-      try{
-        var json = JSON.parse(unescape(resultado));
-      }
-      catch(e){
-        preloader.hide(contenedorHistoria);
-        gridAsistencias.setData([]);
-        contenedorHistoria.backgroundImage = "/images/error_servidor.png";
-        Utiles.Alerta( "Error grave al conectar con el servidor" );
-        return false;         
-      };
-      Ti.API.info("*** resultado: " + JSON.stringify(json));
-      if(json.estado!=200){
-        contenedorHistoria.backgroundImage = "/images/error_servidor.png";
-        preloader.hide(contenedorHistoria);
-        Utiles.Alerta(json.noticias);
-        return false;
-      }               
-      if(json.data.length>0){
-         contenedorHistoria.backgroundImage = "/images/fondo.png";
-         gridAsistencias.setData([]);
-         for(x=0;x<json.data.length;x++){
-            gridAsistencias.appendRow( agregarRegistro(contenedorHistoria, gridAsistencias, json.data, x ) );
-         }         
-      }
-      else{
-         gridAsistencias.setData([]);
-         contenedorHistoria.backgroundImage = "/images/sinasistencias.png";
-      }
-      
-  };
-  peticionHTTP.open("GET", params.URLhistorial  );       
-  peticionHTTP.setRequestHeader("AppKey",params.APPkey);
-  peticionHTTP.setRequestHeader("Authorization",Utiles.obtenerOpcion("authorization"));
-  peticionHTTP.send();   
- 
-*/ 

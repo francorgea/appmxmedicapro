@@ -1,32 +1,129 @@
 var barraIndicaActual;
+var imgAsistencias;
+var imgHistorial;
+var imgLlamada;
+var imgOpciones;
+var txtAsistencias;
+var txtHistorial;
+var txtLlamada;
+var txtOpciones;
+
 
 //Application Window Component Constructor
 function ApplicationWindow() {
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/*
+ * @Incluyendo firebase
+ * @author TAO
+ * @param string 
+ * @return
+ *
+*/   
 
- // Registramos los PUSH
- if( Ti.Platform.name =="android") {
-  
-   
-  
+	Ti.API.info('antes de firebase');
+	
+	var core = require('firebase.core');
+	var isAndroid = Ti.Platform.osname === 'android';
+	// Configure core module (required for all Firebase modules)
+	core.configure();
+	// Important: Include cloud messaging module after the initial configure()
+	var fcm = require('firebase.cloudmessaging');
+	// Called when the Firebase token is ready
+	fcm.addEventListener('didRefreshRegistrationToken', onToken);
+		Ti.API.info('antes de recive message');
+	// Called when direct messages arrive. Note that these are different from push notifications
+	fcm.addEventListener('didReceiveMessage', onMessage);
+	Ti.API.info('@@@@@@@@@@@@@@@@@@@@@@@fin@@@@@@@@@@@@@@@@@@@@@@@');
+	function onToken(e) {
+	    Ti.API.info('FCM Token: ', e.fcmToken);
+	    Utiles.grabarOpcion( "deviceToken", e.fcmToken );
+	    Utiles.grabarOpcion( "token", e.fcmToken );   
+	    Utiles.registrarEnServidor( e.fcmToken );  
+	
+	}
+	
+	function onMessage(e) {
+			Ti.API.info("Notificacion recibida dentro de onmessage");
+	//   procesarMensajeRecibido(e)
+	}
+	
+	function procesarMensajeRecibido(e){
+	
+		// Se actualizan los servicios
+		HistorialProcesos.Actualizar();
+	
+		if(isAndroid){
+			// este se ejecuta cuando la app esta en primer plano
+				var datos1 = fcm.lastData;
+					Ti.API.info("Last data1: " + JSON.stringify(datos1));
+	//				Ti.API.info("accion: " + datos1.message.cuerpo);
+					Ti.API.info("!!!!!!!!!!!mensaje recibido!!!!!!!!!!!");		
+					//Notificamos del push recibido en primer plano
+					Utiles.Alerta("Mensaje: " + datos1.message.cuerpo);
+		}
+		else{
+			Ti.API.info("inBackground" + e.inBackground);
+			if(!e.inBackground  ){
+				Utiles.Alerta("Mensaje: " + e.data.cuerpo);
+			}
+			
+		}
+		
+			
+	}
+	
+	 // Registramos los PUSH
+	 if( isAndroid ) {
+	
+	     fcm.registerForPushNotifications();
+	     // este se ejecuta cuando le das clic a la notificacion y la app esta en segundo plano
+	    	Ti.API.info("Last data2: " + JSON.stringify(fcm.lastData));
+	    	Ti.API.info("Notificacion recibida dentro Android1");
+	    	//extra1 validar cuales son las variables que envia
+	    	
+	    	if (fcm.lastData.message !== undefined) {
+	     	    //comentado ya que no actualmente no se hace ninguna accion cuando se recibe la notificacion push
+	     	    // procesarMensajeRecibido(jsonAux);
+	     	    Ti.API.info("INICIO: Notificacion recibida dentro Android2");
+	     	    Utiles.Alerta(fcm.lastData.message.big_text);
+	     	    Ti.API.info("FIN: Notificacion recibida dentro Android2");
+	    	}
+	}
+	 else {
+		
+		  Ti.App.iOS.addEventListener('usernotificationsettings', function eventUserNotificationSettings() {
+	        // Eliminamos el evento para eviar duplicidad al hacer el llamado de la api
+	        Ti.App.iOS.removeEventListener('usernotificationsettings', eventUserNotificationSettings);
+	        // registrado notificaciones push
+	        Ti.Network.registerForPushNotifications({
+	            success: function () { 
+	                Ti.API.info("*** La app se ha registrado para recibir notificaciones");
+	            },
+	            error: function (e) { 
+	                Ti.API.info("*** Error al registrar para notificaciones: " + e.error );
+	            }, 
+	            callback: function (e) { 
+	                Ti.API.info("*** Aqui procesariamos las notifcicaciones recibidas");
+	                Ti.API.info("Notificacion recibida dentro de IOS");
+	                Ti.API.info("Evento: " + JSON.stringify(e));
+	                procesarMensajeRecibido(e);
+	            } 
+	        });
+	    });
+		
+		Ti.App.iOS.registerUserNotificationSettings({
+			types:	[
+						Ti.App.iOS.USER_NOTIFICATION_TYPE_ALERT, 
+						Ti.App.iOS.USER_NOTIFICATION_TYPE_SOUND,
+						Ti.App.iOS.USER_NOTIFICATION_TYPE_BADGE
+					]
+		});
+	
+	}
 
- }
- else
- {
-
-      var registerForPush = function(){
-       Ti.Network.registerForPushNotifications({
-          success: deviceTokenSuccess,
-          error: deviceTokenError,
-          callback: receivePush
-       });
-      }
-      Ti.App.iOS.addEventListener('usernotificationsettings', registerForPush);
-      Ti.App.iOS.registerUserNotificationSettings({
-         types:[Ti.App.iOS.USER_NOTIFICATION_TYPE_ALERT, Ti.App.iOS.USER_NOTIFICATION_TYPE_SOUND,Ti.App.iOS.USER_NOTIFICATION_TYPE_BADGE]
-      });
-
- }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  // Process incoming push notifications
  function receivePush(e){
@@ -154,14 +251,15 @@ function MostrarPantallaPrincipal(mainView,win) {
        backgroundColor: params.color1,
        bottom: 2,
    });
-
+			
    // Asistencias   
    contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'  });
    contieneAsistencias.addEventListener("click", function(){  cambiarPagina(0); cambiarMenuActual(); })
    contieneAsistencias.add(Ti.UI.createView({height: 3}));
-   var imgAsistencias  = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnAsistencias.png", height: '55%' });
+   imgAsistencias  = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnAsistenciasOn.png", height: '55%' });
    contieneAsistencias.add(imgAsistencias);
-   contieneAsistencias.add(Ti.UI.createLabel({ text: 'Asistencias', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 }));
+   txtAsistencias = Ti.UI.createLabel({ text: 'Asistencias', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   contieneAsistencias.add(txtAsistencias);
    contenedorMenu.add(contieneAsistencias);
 
 
@@ -169,9 +267,10 @@ function MostrarPantallaPrincipal(mainView,win) {
    contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'   });
    contieneHistorial.addEventListener("click", function(){  cambiarPagina(1); cambiarMenuActual(); })
    contieneHistorial.add(Ti.UI.createView({height: 3})); 
-   var imgHistorial      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnHistorial.png", height: '55%' });
+   imgHistorial      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnHistorialOff.png", height: '55%' });
    contieneHistorial.add(imgHistorial);
-   contieneHistorial.add(Ti.UI.createLabel({ text: 'Historial', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 }));
+   txtHistorial = Ti.UI.createLabel({ text: 'Historial', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   contieneHistorial.add(txtHistorial);
    contenedorMenu.add(contieneHistorial);
 
 
@@ -179,9 +278,10 @@ function MostrarPantallaPrincipal(mainView,win) {
    contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'   });
    contieneLlamada.addEventListener("click", function(){  cambiarPagina(2); cambiarMenuActual(); })
    contieneLlamada.add(Ti.UI.createView({height: 3}));
-   var imgLlamada      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnLlamada.png", height: '55%' });
+   imgLlamada      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnLlamadaOff.png", height: '55%' });
    contieneLlamada.add(imgLlamada);
-   contieneLlamada.add(Ti.UI.createLabel({ text: 'Llamada', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 }));
+   txtLlamada = Ti.UI.createLabel({ text: 'Llamada', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   contieneLlamada.add(txtLlamada);
    contenedorMenu.add(contieneLlamada);
 
 
@@ -189,9 +289,11 @@ function MostrarPantallaPrincipal(mainView,win) {
    contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'   });
    contieneOpciones.addEventListener("click", function(){  cambiarPagina(3);cambiarMenuActual();  })
    contieneOpciones.add(Ti.UI.createView({height: 3}));
-   var imgOpciones      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnOpciones.png", height: '55%' });
+   Ti.API.info("Opciones!!! " + contieneOpciones);
+   imgOpciones      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnOpcionesOff.png", height: '55%' });
    contieneOpciones.add(imgOpciones);
-   contieneOpciones.add(Ti.UI.createLabel({ text: 'Opciones', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 }));
+   txtOpciones = Ti.UI.createLabel({ text: 'Opciones', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   contieneOpciones.add(txtOpciones);
    contenedorMenu.add(contieneOpciones);
 
    // Revisamos cual es la opcion actual, para mostrarla
@@ -208,17 +310,33 @@ function cambiarMenuActual() {
    var colorBorde = params.color0;
    apagarTodoElMenu();
    switch(paginaActual){
-      case 0: contieneAsistencias.add(barraIndicaActual); break;
-      case 1: contieneHistorial.add(barraIndicaActual); break;
-      case 2: contieneLlamada.add(barraIndicaActual); break;
-      case 3: contieneOpciones.add(barraIndicaActual); break;
+      case 0: 
+      							imgAsistencias.image = "/images/botonesInferiores/btnAsistenciasOn.png"; 
+      							txtAsistencias.color = params.color1;
+      							break;
+      case 1: 
+      							imgHistorial.image =  "/images/botonesInferiores/btnHistorialOn.png"; 
+      							txtHistorial.color = params.color1;
+      							break;
+      case 2: 
+      							imgLlamada.image =  "/images/botonesInferiores/btnLlamadaOn.png"; 
+      							txtLlamada.color = params.color1;
+      							break;
+      case 3: 
+      							imgOpciones.image =  "/images/botonesInferiores/btnOpcionesOn.png"; 
+      							txtOpciones.color = params.color1;
+      							break;
    }
 }
 function apagarTodoElMenu(){
-   try{ contieneAsistencias.remove(barraIndicaActual) } catch(e) {  Ti.API.info("*** 0 - no esta");  };
-   try{ contieneHistorial.remove(barraIndicaActual)   } catch(e) {  Ti.API.info("*** 1 - no esta");  };
-   try{ contieneLlamada.remove(barraIndicaActual)     } catch(e) {  Ti.API.info("*** 2 - no esta");  };
-   try{ contieneOpciones.remove(barraIndicaActual)    } catch(e) {  Ti.API.info("*** 3 - no esta");  };
+   imgAsistencias.image = "/images/botonesInferiores/btnAsistenciasOff.png";
+   imgHistorial.image =  "/images/botonesInferiores/btnHistorialOff.png";
+   imgLlamada.image =  "/images/botonesInferiores/btnLlamadaOff.png";
+   imgOpciones.image =  "/images/botonesInferiores/btnOpcionesOff.png";
+   txtAsistencias.color = params.color9;
+   txtHistorial.color = params.color9;
+   txtLlamada.color = params.color9;
+   txtOpciones.color = params.color9;
 }
 
 

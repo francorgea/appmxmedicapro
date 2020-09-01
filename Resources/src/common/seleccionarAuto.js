@@ -49,7 +49,7 @@ function CargarAutos( listado, data, win, arreglo, Combo ){
     AgregarAuto( x, arreglo, data, Combo )  ;            
  }
  preloader.hide(win);
- listado.setData(data);
+ listado.data = data;
  
 }
 

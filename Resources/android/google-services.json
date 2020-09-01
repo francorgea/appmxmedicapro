@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "451544106628",
+    "firebase_url": "https://mi-doc-38f45.firebaseio.com",
+    "project_id": "mi-doc-38f45",
+    "storage_bucket": "mi-doc-38f45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451544106628:android:1ce4288ed268cf027ae4d1",
+        "android_client_info": {
+          "package_name": "com.geainternacional.midoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451544106628-b97v70bs0ulmhofvbmbg79j5h247le38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIy1HCfoUNl73pxKCQ2QVPp_1rjn-qS_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451544106628-b97v70bs0ulmhofvbmbg79j5h247le38.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "451544106628-dgq5pv1jk2lm0lmraf8vmonn5o1ibcvd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.geainternacional.midoc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

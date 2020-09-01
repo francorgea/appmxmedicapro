@@ -35,7 +35,7 @@ function CargarOpciones( listado, data, win, arreglo, Combo ){
     AgregarServicio( x, arreglo, data, Combo );              
  }
  preloader.hide(win);
- listado.setData(data);
+ listado.data = data;
  
 }
 

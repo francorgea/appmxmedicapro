@@ -17,18 +17,29 @@ function Mostrar(win){
         height: Ti.UI.FILL,  
     });
     var contenedor = Ti.UI.createView({
-        layout: 'vertical',
+        // layout: 'vertical',
         width: Ti.UI.FILL,
-        height: Ti.UI.SIZE,
+        height: Ti.UI.FILL,
     });
     scroll.add(contenedor);
     win.add(scroll);
     
+		var logo = Ti.UI.createImageView({
+	  			image: 'images/logo.png',
+	  			height: '15%',
+	  			width: '31%',
+	  			top: '50%',
+	  			zIndex: 9999
+  });
+  
+  contenedor.add(logo);
+
     
     var nombre_app = Ti.UI.createLabel({ 
+	    			top: '70%',
         text: params.app_name, 
         font: { fontFamily: params.fuente_primaria, fontSize: 16  } , 
-        color: params.color7,
+        color: params.color0,
     });
     contenedor.add(nombre_app);
     
@@ -37,9 +48,10 @@ function Mostrar(win){
     contenedor.add(Ti.UI.createView({ height: 10 })); 
 
     var version = Ti.UI.createLabel({ 
+	    			top: '75%',
         text: "Versión " + params.app_version, 
         font: { fontFamily: params.fuente_primaria, fontSize: 16  } , 
-        color: params.color10,
+        color: params.color0,
     });
     contenedor.add(version);
     
@@ -48,25 +60,22 @@ function Mostrar(win){
             
     
     var gea = Ti.UI.createLabel({ 
+	    			top: '82%',
         text: "GEA Internacional SA de CV", 
-        color: params.color7,
+        color: params.color1,
         font: { fontFamily: params.fuente_primaria, fontSize: 16  } , 
     });
     contenedor.add(gea);
     var derechos = Ti.UI.createLabel({ 
+        top: '87%',
         text: "(c) 2018 Todos los derechos reservados",
-        color: params.color10, 
+        color: params.color1, 
         font: { fontFamily: params.fuente_primaria, fontSize: 16  } , 
+        
     });
     contenedor.add(derechos);
     
     contenedor.add(Ti.UI.createView({ height:40 }));  
     
-    // Logo2
-    var logo2 = Ti.UI.createImageView({ image: "/images/logoinferior.png", width: '95%' });
-    contenedor.add(logo2);
-    
-       
-
 }
 exports.Mostrar = Mostrar;  
