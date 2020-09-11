@@ -23,7 +23,7 @@ function ApplicationWindow() {
 */   
 
 	Ti.API.info('antes de firebase');
-	
+/*	
 	var core = require('firebase.core');
 	var isAndroid = Ti.Platform.osname === 'android';
 	// Configure core module (required for all Firebase modules)
@@ -36,6 +36,7 @@ function ApplicationWindow() {
 	// Called when direct messages arrive. Note that these are different from push notifications
 	fcm.addEventListener('didReceiveMessage', onMessage);
 	Ti.API.info('@@@@@@@@@@@@@@@@@@@@@@@fin@@@@@@@@@@@@@@@@@@@@@@@');
+
 	function onToken(e) {
 	    Ti.API.info('FCM Token: ', e.fcmToken);
 	    Utiles.grabarOpcion( "deviceToken", e.fcmToken );
@@ -122,7 +123,7 @@ function ApplicationWindow() {
 		});
 	
 	}
-
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  // Process incoming push notifications
@@ -239,7 +240,7 @@ function MostrarPantallaPrincipal(mainView,win) {
        bottom: 0 ,
        width: Ti.UI.FILL,
        height: '13%',
-       backgroundColor: params.color3,
+       backgroundColor: params.color1,
    });
    mainView.add(contenedorMenu);
    
@@ -253,7 +254,7 @@ function MostrarPantallaPrincipal(mainView,win) {
    });
 			
    // Asistencias   
-   contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'  });
+   contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'  });
    contieneAsistencias.addEventListener("click", function(){  cambiarPagina(0); cambiarMenuActual(); })
    contieneAsistencias.add(Ti.UI.createView({height: 3}));
    imgAsistencias  = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnAsistenciasOn.png", height: '55%' });
@@ -264,7 +265,7 @@ function MostrarPantallaPrincipal(mainView,win) {
 
 
    // Historial
-   contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'   });
+   contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'   });
    contieneHistorial.addEventListener("click", function(){  cambiarPagina(1); cambiarMenuActual(); })
    contieneHistorial.add(Ti.UI.createView({height: 3})); 
    imgHistorial      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnHistorialOff.png", height: '55%' });
@@ -275,7 +276,7 @@ function MostrarPantallaPrincipal(mainView,win) {
 
 
    // Llamada
-   contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'   });
+   contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'   });
    contieneLlamada.addEventListener("click", function(){  cambiarPagina(2); cambiarMenuActual(); })
    contieneLlamada.add(Ti.UI.createView({height: 3}));
    imgLlamada      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnLlamadaOff.png", height: '55%' });
@@ -286,7 +287,7 @@ function MostrarPantallaPrincipal(mainView,win) {
 
 
    // Mas opciones
-   contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color3, layout: 'vertical'   });
+   contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'   });
    contieneOpciones.addEventListener("click", function(){  cambiarPagina(3);cambiarMenuActual();  })
    contieneOpciones.add(Ti.UI.createView({height: 3}));
    Ti.API.info("Opciones!!! " + contieneOpciones);
@@ -312,19 +313,19 @@ function cambiarMenuActual() {
    switch(paginaActual){
       case 0: 
       							imgAsistencias.image = "/images/botonesInferiores/btnAsistenciasOn.png"; 
-      							txtAsistencias.color = params.color1;
+      							txtAsistencias.color = params.color13;
       							break;
       case 1: 
       							imgHistorial.image =  "/images/botonesInferiores/btnHistorialOn.png"; 
-      							txtHistorial.color = params.color1;
+      							txtHistorial.color = params.color13;
       							break;
       case 2: 
       							imgLlamada.image =  "/images/botonesInferiores/btnLlamadaOn.png"; 
-      							txtLlamada.color = params.color1;
+      							txtLlamada.color = params.color13;
       							break;
       case 3: 
       							imgOpciones.image =  "/images/botonesInferiores/btnOpcionesOn.png"; 
-      							txtOpciones.color = params.color1;
+      							txtOpciones.color = params.color13;
       							break;
    }
 }

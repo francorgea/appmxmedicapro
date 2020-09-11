@@ -17,8 +17,8 @@ exports.cuenta_siga = 'ONE';
 
 // Definimos los colores
 exports.color0  = "black"  ;  // Negro
-exports.color1  = "#00468a";  // Azul botones emergencias
-exports.color2  = "#84c335";  // verde
+exports.color1  = "#11AEC7";  // Azul botones emergencias
+exports.color2  = "#98C221";  // verde
 exports.color3  = "#99bdf4";  // Gris obscuro botones inferiores 
 exports.color4  = "#FFFD38";  // Amarillo
 exports.color5  = "#E51066";  // Rosa
@@ -29,7 +29,7 @@ exports.color9  = "#6b9ae7";  // Azul opaco botones inferiores
 exports.color10 = '#f1f1f1';  // Gris Claro
 exports.color11 = '#a4a09d';  // Gris textos   
 exports.color12 = '#f3f3f3';  // Gris fondo textos  
-exports.color13 = '#b3b0ad';  // Gris placeholder inputs
+exports.color13 = '#00468a';  // azul de colores inferiores
 exports.color14 = '#4C4C4C';  // Gris fuerte 1
 exports.color15 = '#8B8B8B';  // Gris fuerte 2
 exports.color16 = '#9E9E9E';  // Gris fuerte 3
@@ -56,7 +56,7 @@ exports.sonido_soltar = "pop2.wav";
 
 // email y links
 exports.email_contacto   = "sistemas_mobile@geainternacional.com";
-exports.pagina_web       = "http://www.geainternacional.com";
+exports.pagina_web       = "http://www.midoc.one";
 exports.pagina_tyc       = "https://www.geainternacional.com/cl/se_fcm/tyc.html";
 exports.pagina_pp        = "http://www.geainternacional.com/cl/se_fcm/pp.html";
 
@@ -70,7 +70,7 @@ exports.URLedoctorANDROID = "https://play.google.com/store/apps/details?id=video
 exports.URLedoctorIOS     = "https://itunes.apple.com/us/app/e-doctor/id1147856481?ls=1&mt=8";
 
 // Tipografias
-exports.fuente_primaria    = ( Ti.Platform.osname=='android' ) ? "OpenSans-Regular"    : "Open Sans";
-exports.fuente             = ( Ti.Platform.osname=='android' ) ? "OpenSans-Regular"    : "Open Sans";
-exports.fuente_input       = ( Ti.Platform.osname=='android' ) ? "OpenSans-Regular"    : "Open Sans";
+exports.fuente_primaria    = ( Ti.Platform.osname=='android' ) ? "Roboto-Regular"    : "Roboto";
+exports.fuente             = ( Ti.Platform.osname=='android' ) ? "Roboto-Regular"    : "Roboto";
+exports.fuente_input       = ( Ti.Platform.osname=='android' ) ? "Roboto-Regular"    : "Roboto";
 

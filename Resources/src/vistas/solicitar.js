@@ -245,7 +245,7 @@ function SolicitarMuestraVentana(win, tituloAsistencia, arregloOpciones, EsAsist
                  var modelo        = Utiles.obtenerOpcion('modelo');
                  var placas        = Utiles.obtenerOpcion('placas');
                  // Ti.App.db.execute( "INSERT INTO historico_asistencias (numexped, numasistencia, fecha_hora, tipo, estatus, solicitante, beneficiario, telefono, motivo, marca, modelo, placas, edad, calificacion ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,? )",numexped, numasistencia, fecha_hoy, 0 , 0, solicita, beneficiario, telefono, motivo, marca, modelo, placas, 0, 0);  
-                 Utiles.Alerta( "Tu asistencia fue enviada y se generó el expediente " + numexped + ", podrás darle seguimiento en la opción de Chat" );
+                 Utiles.Alerta( "Tu asistencia fue enviada y se generó el expediente " + numexped + ", podrás darle seguimiento en la opción Historial" );
                  return true;
               }
               else {
