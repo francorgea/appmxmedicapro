@@ -123,22 +123,7 @@ exports.MarcarNumero = function(numero){
 }
 function MarcarNumero(numero){
   Ti.API.info("*** Marcando número: " + numero );
-  if(Ti.Platform.osname=="android"){
-       var call = "tel:" + numero;
-       var intent = Ti.Android.createIntent({
-            action : Ti.Android.ACTION_CALL,
-            data : call
-        });
-        try{
-          Ti.Android.currentActivity.startActivity(intent);	     
-        }
-        catch(e){
-          Alerta("No fué posible marcar el número: " + numero + ", es posible que no haya asignado permisos a la aplicación. Por favor inténtelo manualmente.");
-        }
-  }
-  else{
-    Titanium.Platform.openURL('tel:' + numero );	
-  }  
+  Titanium.Platform.openURL('tel:' + numero );	
 }
 // ========================================================
 exports.abrirEnlace = function(url) {

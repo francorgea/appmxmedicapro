@@ -17,7 +17,7 @@ exports.cuenta_siga = 'ONE';
 
 // Definimos los colores
 exports.color0  = "black"  ;  // Negro
-exports.color1  = "#11AEC7";  // Azul botones emergencias
+exports.color1  = "#39bcd0";  // Azul botones emergencias #11AEC7
 exports.color2  = "#98C221";  // verde
 exports.color3  = "#99bdf4";  // Gris obscuro botones inferiores 
 exports.color4  = "#FFFD38";  // Amarillo
@@ -25,7 +25,7 @@ exports.color5  = "#E51066";  // Rosa
 exports.color6  = "#A4A09D";  // Gris Fuerte
 exports.color7  = "white"  ;  // Blanco 
 exports.color8  = "#ff0000";  // Rojo
-exports.color9  = "#6b9ae7";  // Azul opaco botones inferiores
+exports.color9  = "grey";  // Azul opaco botones inferiores. #a6b3dd
 exports.color10 = '#f1f1f1';  // Gris Claro
 exports.color11 = '#a4a09d';  // Gris textos   
 exports.color12 = '#f3f3f3';  // Gris fondo textos  
@@ -33,6 +33,17 @@ exports.color13 = '#00468a';  // azul de colores inferiores
 exports.color14 = '#4C4C4C';  // Gris fuerte 1
 exports.color15 = '#8B8B8B';  // Gris fuerte 2
 exports.color16 = '#9E9E9E';  // Gris fuerte 3
+
+exports.color17 = '#577013';  // Gris fuerte 1
+exports.color18 = '#d3e5a0';  // Gris fuerte 2
+exports.color19 = '#88a144';  // Gris fuerte 3
+
+exports.color20 = '#0a6371';  // Gris fuerte 1
+exports.color21 = '#1ea4b8';  // Gris fuerte 2
+exports.color22 = '#458792';  // Gris fuerte 3
+
+exports.color22 = '#d3e5a0';  // verde clarito
+
 
 // Estrellas
 exports.estrella_off = "/images/estrella_off.png";
@@ -57,8 +68,8 @@ exports.sonido_soltar = "pop2.wav";
 // email y links
 exports.email_contacto   = "sistemas_mobile@geainternacional.com";
 exports.pagina_web       = "http://www.midoc.one";
-exports.pagina_tyc       = "https://www.geainternacional.com/cl/se_fcm/tyc.html";
-exports.pagina_pp        = "http://www.geainternacional.com/cl/se_fcm/pp.html";
+exports.pagina_tyc       = "https://www.geainternacional.com/mx/midoc/tyc.html";
+exports.pagina_pp        = "https://www.geainternacional.com/mx/midoc/pp.html";
 
 
 // URL de Servicios

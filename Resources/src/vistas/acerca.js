@@ -62,14 +62,14 @@ function Mostrar(win){
     var gea = Ti.UI.createLabel({ 
 	    			top: '82%',
         text: "GEA Internacional SA de CV", 
-        color: params.color1,
+        color: params.color7,
         font: { fontFamily: params.fuente_primaria, fontSize: 16  } , 
     });
     contenedor.add(gea);
     var derechos = Ti.UI.createLabel({ 
         top: '87%',
         text: "(c) 2018 Todos los derechos reservados",
-        color: params.color1, 
+        color: params.color7, 
         font: { fontFamily: params.fuente_primaria, fontSize: 16  } , 
         
     });

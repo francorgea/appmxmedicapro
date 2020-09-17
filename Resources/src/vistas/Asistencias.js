@@ -38,7 +38,7 @@ function Asistencias() {
   });
   
   //Boton Medica
-		var btnMedica = new Button("ASISTENCIA MÉDICA",params.color1,'80%');    
+		var btnMedica = new Button("ASISTENCIA MÉDICA",params.color21,'80%');    
   btnMedica.addEventListener("click", function(){
 	     var asistencia =  require("/src/common/asistenciaMedica");
       PedirAsistencia( "Asistencia Médica", "/images/icoMedica.png", asistencia.servicios(), false  );
@@ -47,7 +47,7 @@ function Asistencias() {
   contenedorBotones.add(Ti.UI.createView( {height:10} ));
   
   //Boton Dental
-		var btnDental = new Button("ASISTENCIA DENTAL",params.color1,'80%');    
+		var btnDental = new Button("ASISTENCIA DENTAL",params.color21,'80%');    
   btnDental.addEventListener("click", function(){
       var asistencia =  require("/src/common/asistenciaDental");
       PedirAsistencia( "Asistencia Dental", "/images/icoDental.png", asistencia.servicios(), false  );
@@ -56,7 +56,7 @@ function Asistencias() {
   contenedorBotones.add(Ti.UI.createView( {height:10} ));
   
   //Boton Optica
-  var btnOptica = new Button("ASISTENCIA ÓPTICA",params.color1,'80%');    
+  var btnOptica = new Button("ASISTENCIA ÓPTICA",params.color21,'80%');    
   btnOptica.addEventListener("click", function(){
 	  			var asistencia =  require("/src/common/asistenciaOptica");
       PedirAsistencia( "Asistencia Optica", "/images/icoOptica.png", asistencia.servicios(), false  );
@@ -65,7 +65,7 @@ function Asistencias() {
   contenedorBotones.add(Ti.UI.createView( {height:10} ));
   
   //Boton Veterinaria
-  var btnVeterinaria = new Button("ASISTENCIA VETERINARIA",params.color1,'80%');    
+  var btnVeterinaria = new Button("ASISTENCIA VETERINARIA",params.color21,'80%');    
   btnVeterinaria.addEventListener("click", function(){
 	  		 var asistencia =  require("/src/common/asistenciaVeterinaria");
       PedirAsistencia( "Asistencia Veterinaria", "/images/icoVeterinaria.png", asistencia.servicios(), false  );
@@ -74,7 +74,7 @@ function Asistencias() {
   contenedorBotones.add(Ti.UI.createView( {height:10} ));
   
   //Boton Funeraria
-  var btnFuneraria = new Button("ASISTENCIA FUNERARIA",params.color1,'80%');    
+  var btnFuneraria = new Button("ASISTENCIA FUNERARIA",params.color21,'80%');    
   btnFuneraria.addEventListener("click", function(){
 	  			var asistencia =  require("/src/common/asistenciaFuneraria");
       PedirAsistencia( "Asistencia Funeraria", "/images/icoFuneraria.png", asistencia.servicios(), false  );
@@ -83,7 +83,7 @@ function Asistencias() {
   contenedorBotones.add(Ti.UI.createView( {height:10} ));  
   
   //Boton Funeraria
-  var btneDoctor = new Button("e-Doctor",params.color1,'80%');    
+  var btneDoctor = new Button("e-Doctor",params.color21,'80%');    
   btneDoctor.addEventListener("click", function(){
       var edoctorgea = "edoctorgea://";
        if(params.isAndroid){

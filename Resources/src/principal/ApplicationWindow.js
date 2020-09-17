@@ -240,7 +240,7 @@ function MostrarPantallaPrincipal(mainView,win) {
        bottom: 0 ,
        width: Ti.UI.FILL,
        height: '13%',
-       backgroundColor: params.color1,
+       backgroundColor: params.color20,
    });
    mainView.add(contenedorMenu);
    
@@ -249,51 +249,51 @@ function MostrarPantallaPrincipal(mainView,win) {
    barraIndicaActual = Ti.UI.createView({
        width: '90%',
        height: 3,
-       backgroundColor: params.color1,
+       backgroundColor: params.color2,
        bottom: 2,
    });
 			
    // Asistencias   
-   contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'  });
+   contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'  });
    contieneAsistencias.addEventListener("click", function(){  cambiarPagina(0); cambiarMenuActual(); })
    contieneAsistencias.add(Ti.UI.createView({height: 3}));
-   imgAsistencias  = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnAsistenciasOn.png", height: '55%' });
+   imgAsistencias  = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnAsistencias.png", height: '55%' });
    contieneAsistencias.add(imgAsistencias);
-   txtAsistencias = Ti.UI.createLabel({ text: 'Asistencias', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   txtAsistencias = Ti.UI.createLabel({ text: 'Asistencias', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
    contieneAsistencias.add(txtAsistencias);
    contenedorMenu.add(contieneAsistencias);
 
 
    // Historial
-   contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'   });
+   contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'   });
    contieneHistorial.addEventListener("click", function(){  cambiarPagina(1); cambiarMenuActual(); })
    contieneHistorial.add(Ti.UI.createView({height: 3})); 
-   imgHistorial      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnHistorialOff.png", height: '55%' });
+   imgHistorial      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnHistorial.png", height: '55%' });
    contieneHistorial.add(imgHistorial);
-   txtHistorial = Ti.UI.createLabel({ text: 'Historial', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   txtHistorial = Ti.UI.createLabel({ text: 'Historial', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
    contieneHistorial.add(txtHistorial);
    contenedorMenu.add(contieneHistorial);
 
 
    // Llamada
-   contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'   });
+   contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'   });
    contieneLlamada.addEventListener("click", function(){  cambiarPagina(2); cambiarMenuActual(); })
    contieneLlamada.add(Ti.UI.createView({height: 3}));
-   imgLlamada      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnLlamadaOff.png", height: '55%' });
+   imgLlamada      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnLlamada.png", height: '55%' });
    contieneLlamada.add(imgLlamada);
-   txtLlamada = Ti.UI.createLabel({ text: 'Llamada', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   txtLlamada = Ti.UI.createLabel({ text: 'Llamada', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
    contieneLlamada.add(txtLlamada);
    contenedorMenu.add(contieneLlamada);
 
 
    // Mas opciones
-   contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color1, layout: 'vertical'   });
+   contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'   });
    contieneOpciones.addEventListener("click", function(){  cambiarPagina(3);cambiarMenuActual();  })
    contieneOpciones.add(Ti.UI.createView({height: 3}));
    Ti.API.info("Opciones!!! " + contieneOpciones);
-   imgOpciones      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnOpcionesOff.png", height: '55%' });
+   imgOpciones      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnOpciones.png", height: '55%' });
    contieneOpciones.add(imgOpciones);
-   txtOpciones = Ti.UI.createLabel({ text: 'Opciones', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color1 });
+   txtOpciones = Ti.UI.createLabel({ text: 'Opciones', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
    contieneOpciones.add(txtOpciones);
    contenedorMenu.add(contieneOpciones);
 
@@ -311,33 +311,44 @@ function cambiarMenuActual() {
    var colorBorde = params.color0;
    apagarTodoElMenu();
    switch(paginaActual){
-      case 0: 
-      							imgAsistencias.image = "/images/botonesInferiores/btnAsistenciasOn.png"; 
-      							txtAsistencias.color = params.color13;
+     /* case 0: 
+      							imgAsistencias.image = "/images/botonesInferiores/btnAsistencias.png"; 
+      							txtAsistencias.color = params.color7;
       							break;
       case 1: 
-      							imgHistorial.image =  "/images/botonesInferiores/btnHistorialOn.png"; 
-      							txtHistorial.color = params.color13;
+      							imgHistorial.image =  "/images/botonesInferiores/btnHistorial.png"; 
+      							txtHistorial.color = params.color7;
       							break;
       case 2: 
-      							imgLlamada.image =  "/images/botonesInferiores/btnLlamadaOn.png"; 
-      							txtLlamada.color = params.color13;
+      							imgLlamada.image =  "/images/botonesInferiores/btnLlamada.png"; 
+      							txtLlamada.color = params.color7;
       							break;
       case 3: 
-      							imgOpciones.image =  "/images/botonesInferiores/btnOpcionesOn.png"; 
-      							txtOpciones.color = params.color13;
+      							imgOpciones.image =  "/images/botonesInferiores/btnOpciones.png"; 
+      							txtOpciones.color = params.color7;
       							break;
+     */
+     case 0: contieneAsistencias.add(barraIndicaActual); break;
+     case 1: contieneHistorial.add(barraIndicaActual); break;
+     case 2: contieneLlamada.add(barraIndicaActual); break;
+     case 3: contieneOpciones.add(barraIndicaActual); break;
    }
 }
 function apagarTodoElMenu(){
-   imgAsistencias.image = "/images/botonesInferiores/btnAsistenciasOff.png";
-   imgHistorial.image =  "/images/botonesInferiores/btnHistorialOff.png";
-   imgLlamada.image =  "/images/botonesInferiores/btnLlamadaOff.png";
-   imgOpciones.image =  "/images/botonesInferiores/btnOpcionesOff.png";
-   txtAsistencias.color = params.color9;
-   txtHistorial.color = params.color9;
-   txtLlamada.color = params.color9;
-   txtOpciones.color = params.color9;
+   try{ contieneAsistencias.remove(barraIndicaActual) } catch(e) {  Ti.API.info("*** 0 - no esta");  };
+   try{ contieneHistorial.remove(barraIndicaActual)   } catch(e) {  Ti.API.info("*** 1 - no esta");  };
+   try{ contieneLlamada.remove(barraIndicaActual)     } catch(e) {  Ti.API.info("*** 2 - no esta");  };
+   try{ contieneOpciones.remove(barraIndicaActual)    } catch(e) {  Ti.API.info("*** 3 - no esta");  };
+   /*
+   imgAsistencias.image = "/images/botonesInferiores/btnAsistencias.png";
+   imgHistorial.image =  "/images/botonesInferiores/btnHistorial.png";
+   imgLlamada.image =  "/images/botonesInferiores/btnLlamada.png";
+   imgOpciones.image =  "/images/botonesInferiores/btnOpciones.png";
+   txtAsistencias.color = params.color7;
+   txtHistorial.color = params.color7;
+   txtLlamada.color = params.color7;
+   txtOpciones.color = params.color7;
+   */
 }
 
 
