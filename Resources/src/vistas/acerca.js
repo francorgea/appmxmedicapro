@@ -2,7 +2,7 @@
 //
 //
 //
-function Mostrar(win){
+function Mostrar(win){ 
   
     var Button = require("src/common/Button");
     var Input = require("src/common/InputNS");

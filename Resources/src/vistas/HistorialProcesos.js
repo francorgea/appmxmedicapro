@@ -2,7 +2,7 @@
 var Actualizar = function() { 
   
          if(!params.isAndroid){
-           Titanium.UI.iOS.appBadge = 0;
+           Titanium.UI.iOS.appBadge = 0; 
          }
          Ti.App.Properties.setString('ActualizarListadoAsistencias','N');
                   
