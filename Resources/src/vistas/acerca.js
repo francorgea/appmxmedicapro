@@ -2,13 +2,8 @@
 //
 //
 //
-<<<<<<< HEAD
-function Mostrar(win){
-
-=======
 function Mostrar(win){ 
   
->>>>>>> 82995d158158c5649c85f37efb0e2ae21bceb304
     var Button = require("src/common/Button");
     var Input = require("src/common/InputNS");
     win.backgroundImage =  "/images/fondos/fondo.png";

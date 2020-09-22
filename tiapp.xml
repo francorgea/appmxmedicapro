@@ -11,7 +11,7 @@
     <fullscreen>true</fullscreen>
     <navbar-hidden>true</navbar-hidden>
     <analytics>false</analytics>
-    <guid>063179aa-1915-4b17-9666-6593b9a46231</guid>
+    <guid>128ca59e-0313-4498-9bbb-c955987aad73</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
@@ -96,5 +96,5 @@
         <target device="iphone">true</target>
     </deployment-targets>
     <sdk-version>9.0.1.GA</sdk-version>
-    <property name="appc-app-id" type="string">5f63dee3d2f75c237f55e55b</property>
+    <property name="appc-app-id" type="string">5f34dbb2535a542b36187f32</property>
 </ti:app>
