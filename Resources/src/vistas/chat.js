@@ -8,7 +8,8 @@ var contadorRenglones;
 var sndEnviar;
 var sndRecibir;
 var sndSoltar;
-//
+//. 
+
 //
 //
 function Chat(win,expediente,datos){

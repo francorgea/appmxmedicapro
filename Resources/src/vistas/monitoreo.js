@@ -12,7 +12,7 @@ function datos(win,informacion,winChat){
           Ti.API.info("*** Permiso aceptado");
           datosMostrar(win,informacion,winChat);
         }  
-        else{
+        else{ 
           Ti.API.info("*** Permiso rechazado");
           win.backgroundImage = "/images/error_geo.png";
         }

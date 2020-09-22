@@ -4,7 +4,7 @@ var calificacion;
 //
 //
 //
-function Calificar(win,expediente,servicio,winAnterior){
+function Calificar(win,expediente,servicio,winAnterior){ 
   
     calificacion = 0;
     win.backgroundColor = params.color7;
