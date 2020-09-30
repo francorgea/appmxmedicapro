@@ -23,7 +23,7 @@ function ApplicationWindow() {
 */   
 
 	Ti.API.info('antes de firebase');
-/*	
+
 	var core = require('firebase.core');
 	var isAndroid = Ti.Platform.osname === 'android';
 	// Configure core module (required for all Firebase modules)
@@ -47,7 +47,7 @@ function ApplicationWindow() {
 	
 	function onMessage(e) {
 			Ti.API.info("Notificacion recibida dentro de onmessage");
-	//   procesarMensajeRecibido(e)
+	   procesarMensajeRecibido(e)
 	}
 	
 	function procesarMensajeRecibido(e){
@@ -57,12 +57,15 @@ function ApplicationWindow() {
 	
 		if(isAndroid){
 			// este se ejecuta cuando la app esta en primer plano
-				var datos1 = fcm.lastData;
-					Ti.API.info("Last data1: " + JSON.stringify(datos1));
+			Ti.API.info(JSON.stringify(e));
+			
+				var datos1 = e;
+				
+					Ti.API.info("Last data1: " + JSON.stringify(datos1.message.data.accion));
 	//				Ti.API.info("accion: " + datos1.message.cuerpo);
 					Ti.API.info("!!!!!!!!!!!mensaje recibido!!!!!!!!!!!");		
 					//Notificamos del push recibido en primer plano
-					Utiles.Alerta("Mensaje: " + datos1.message.cuerpo);
+					Utiles.Alerta("Mensaje: " + datos1.message.title);
 		}
 		else{
 			Ti.API.info("inBackground" + e.inBackground);
@@ -123,7 +126,7 @@ function ApplicationWindow() {
 		});
 	
 	}
-*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  // Process incoming push notifications
@@ -152,10 +155,7 @@ function ApplicationWindow() {
     Ti.API.info("*** No se pudo registrar el token");
     Ti.API.info( e );
  };
-
-
-
-
+ 
 	var win = Ti.UI.createWindow({
  	orientationModes: [ Titanium.UI.PORTRAIT, Titanium.UI.UPSIDE_PORTRAIT],
  	backgroundColor: params.color3,
@@ -254,47 +254,47 @@ function MostrarPantallaPrincipal(mainView,win) {
    });
 			
    // Asistencias   
-   contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'  });
+   contieneAsistencias = Ti.UI.createView({ left: 0, width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20 });
    contieneAsistencias.addEventListener("click", function(){  cambiarPagina(0); cambiarMenuActual(); })
    contieneAsistencias.add(Ti.UI.createView({height: 3}));
    imgAsistencias  = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnAsistencias.png", height: '55%' });
    contieneAsistencias.add(imgAsistencias);
    txtAsistencias = Ti.UI.createLabel({ text: 'Asistencias', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
-   contieneAsistencias.add(txtAsistencias);
+   //contieneAsistencias.add(txtAsistencias);
    contenedorMenu.add(contieneAsistencias);
 
 
    // Historial
-   contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'   });
+   contieneHistorial = Ti.UI.createView({ left: '25%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20 });
    contieneHistorial.addEventListener("click", function(){  cambiarPagina(1); cambiarMenuActual(); })
    contieneHistorial.add(Ti.UI.createView({height: 3})); 
    imgHistorial      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnHistorial.png", height: '55%' });
    contieneHistorial.add(imgHistorial);
    txtHistorial = Ti.UI.createLabel({ text: 'Historial', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
-   contieneHistorial.add(txtHistorial);
+   //contieneHistorial.add(txtHistorial);
    contenedorMenu.add(contieneHistorial);
 
 
    // Llamada
-   contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'   });
+   contieneLlamada = Ti.UI.createView({ left: '50%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20 });
    contieneLlamada.addEventListener("click", function(){  cambiarPagina(2); cambiarMenuActual(); })
    contieneLlamada.add(Ti.UI.createView({height: 3}));
    imgLlamada      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnLlamada.png", height: '55%' });
    contieneLlamada.add(imgLlamada);
    txtLlamada = Ti.UI.createLabel({ text: 'Llamada', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
-   contieneLlamada.add(txtLlamada);
+   //contieneLlamada.add(txtLlamada);
    contenedorMenu.add(contieneLlamada);
 
 
    // Mas opciones
-   contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20, layout: 'vertical'   });
+   contieneOpciones = Ti.UI.createView({ left: '75%', width: '25%', height: Ti.UI.FILL, backgroundColor: params.color20  });
    contieneOpciones.addEventListener("click", function(){  cambiarPagina(3);cambiarMenuActual();  })
    contieneOpciones.add(Ti.UI.createView({height: 3}));
    Ti.API.info("Opciones!!! " + contieneOpciones);
    imgOpciones      = Ti.UI.createImageView({ image: "/images/botonesInferiores/btnOpciones.png", height: '55%' });
    contieneOpciones.add(imgOpciones);
    txtOpciones = Ti.UI.createLabel({ text: 'Opciones', font: { fontFamily: params.fuente, fontSize: 11 }, color: params.color7 });
-   contieneOpciones.add(txtOpciones);
+   //contieneOpciones.add(txtOpciones);
    contenedorMenu.add(contieneOpciones);
 
    // Revisamos cual es la opcion actual, para mostrarla

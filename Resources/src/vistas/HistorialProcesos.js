@@ -21,7 +21,7 @@ var Actualizar = function() {
          };
          peticionHTTP.onload =  function() 
          {
-		          Ti.API.info("*** RESULTADO: " + this.responseText );
+		          //Ti.API.info("*** RESULTADO: " + this.responseText );
 		          if( this.responseText == "0" ) {
                //Ti.App.db.execute("DELETE FROM historico_asistencias"); 
                // Ti.App.db.execute("DELETE FROM llegada_push"); 
@@ -44,7 +44,7 @@ var Actualizar = function() {
    	            var json = json.datos;     
       		        var pos;  
                   if(json.length>0){
-                     contenedorHistoria.backgroundImage = "/images/fondos/fondo.png";
+                     contenedorHistoria.backgroundImage = null;
                      gridAsistencias.data = [];
                      for(x=0;x<json.length;x++){
                         gridAsistencias.appendRow( agregarRegistro(contenedorHistoria, gridAsistencias, json, x, 'white' ) );
@@ -103,7 +103,7 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
   coordinador  = "coordinador";
   
  */ 
- 
+ Ti.API.info(JSON.stringify(json[x]));
    var renglon = Ti.UI.createTableViewRow({
      		datos          : json[x],
        height         : 120,
@@ -124,7 +124,8 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
    var vistaEstrellas = Ti.UI.createView({
        right: 3, 
        width: '30%',
-       height: Ti.UI.FILL
+       height: Ti.UI.FILL,
+       //borderColor: "red"
    });
    var imgEstrellas = Ti.UI.createImageView({
        image: Utiles.icono_calificacion(  json[x].evaluacion  ),
@@ -145,10 +146,11 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
    });
    var lblSolicita = Ti.UI.createLabel({
        text: "Solicita: " + Utiles.FechaCadena( json[x].fechainicio ),
-       font: { fontFamily: params.fuente_primaria, fontSize: 13 },
+       font: { fontFamily: params.fuente_primaria, fontSize: 14 },
        width: 'auto',
        color: params.color0,       
-       left: 35
+       left: 35,
+       //borderColor: "red"
    });   
    vistaRenglon.add( Ti.UI.createView({ width: Ti.UI.FILL, height: '5' })  );
    var lblTermina = Ti.UI.createLabel({
@@ -184,7 +186,7 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
        text: Utiles.quitar_espacios(Utiles.Pintar_Servicio( json[x].servicio )),
        font: { fontFamily: params.fuente_primaria, fontSize: 14 },
        textAlign: 'left',
-       wordWrap: false,
+       maxLines: 1,
        color: params.color0,       
        width: '70%',
        height: '16',
@@ -206,7 +208,7 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
        font: { fontFamily: params.fuente_primaria, fontSize: 14 },
        width: 'auto',
        textAlign: 'left',
-       wordWrap: false,
+       maxLines: 1,
        color: params.color0,      
        width: '80%',
        height: 16,
@@ -229,10 +231,10 @@ function agregarRegistro(contenedorHistoria, gridAsistencias, json, x, colorReng
        font: { fontFamily: params.fuente_primaria, fontSize: 14 },
        width: 'auto',
        textAlign: 'left',
-       wordWrap: false,
+       maxLines: 1,
        color: params.color0,       
        width: '80%',
-       height: 16,
+       height: 19,
        top: 95,       
        left: 100
    });

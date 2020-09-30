@@ -5,7 +5,7 @@ function Historial( mainView ) {
       width: Ti.UI.FILL,
       height: Ti.UI.FILL,   
        backgroundImage: 'images/sinasistencias.png',
-      // borderColor: 'blue'   
+       //borderColor: 'blue'   
   });  
   
   var objBarraTitulo = require("/src/common/BarraTitulo");
@@ -17,38 +17,11 @@ function Historial( mainView ) {
 			   height: Ti.UI.SIZE,
 			   layout: 'vertical',
 			   top: '10%',
-			   //borderColor: 'red'
+			   backgroundColor: params.color7
 		});
 		contenedorHistoria.add(contenedorImagen);
 		
-		var imagen = Ti.UI.createImageView({
-			   image: 'images/fondos/fondoAsistencias.png',
-			   width: Ti.UI.FILL,
-			   height: Ti.UI.SIZE,
-		});
-		
-				var logo = Ti.UI.createImageView({
-	  			image: 'images/logo.png',
-	  			height: '15%',
-	  			width: '31%',
-	  			top: '15%',
-	  			right: 15,
-	  			zIndex: 9999
-  });
-  
-  //contenedorHistoria.add(logo);
-		contenedorImagen.add(imagen); 
-			
-		// contenedorHistoria.add(Ti.UI.createView({
-			//top: 50,
-		//	width: Ti.UI.FILL,      
-		//	height: "50%",
-//			borderColor: "red",
- //  backgroundImage: 'images/fondos/fondoAsistencias.png'
- // }));
-
-
- 	// Creamos la tabla, con el arreglo de datos 
+		// Creamos la tabla, con el arreglo de datos 
  	
  	var data = [] ;
  	gridAsistencias= Titanium.UI.createTableView({

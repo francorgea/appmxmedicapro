@@ -200,7 +200,7 @@ exports.registrarEnServidor = function(deviceToken){
    var servidor = params.URLmobile;
    var enlace = servidor + "?appname="+params.pref+"&appversion="+params.app_version+"&deviceuid="+Utiles.obtener_id()+"&";
    enlace = enlace + "devicetoken="+deviceToken+"&devicename="+Titanium.Platform.name+"&devicemodel="+Titanium.Platform.model+"&";
-   enlace = enlace +	"cveafiliado="+Utiles.obtenerOpcion('cedula')+"&cuenta="+Utiles.obtenerOpcion("cuenta_siga")+"&";   
+   enlace = enlace +	"cveafiliado="+Utiles.obtenerOpcion('cedula')+"&cuenta="+params.cuenta_siga+"&";   
    enlace = enlace + "deviceversion="+Titanium.Platform.version; 
    Ti.API.info("Enlace del token: ------------>"+enlace);
    var peticionHTTP = Ti.Network.createHTTPClient();
