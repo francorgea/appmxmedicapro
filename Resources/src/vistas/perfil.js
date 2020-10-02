@@ -272,8 +272,6 @@ function MostrarDatos(win, json) {
 				Utiles.grabarOpcion('firmado', 'N');
 				Utiles.grabarOpcion('plan_siga', '');
 				Utiles.grabarOpcion('resultado_registro', resultado);
-				var token = Utiles.obtenerOpcion('token');
-				Utiles.registrarEnServidor(token);
 				return false;
 			}
 			var datos = resultado.split('@');
@@ -298,6 +296,9 @@ function MostrarDatos(win, json) {
 			Utiles.grabarOpcion('cedula', jIdentificacion.input.value);
 			Utiles.grabarOpcion('telefono', jTelefono.input.value);
 			Utiles.grabarOpcion('email', jEmail.input.value);
+			var token = Utiles.obtenerOpcion('token');
+			Utiles.registrarEnServidor(token);
+				
 			json.firmado = 'S';
 			jNombres.input.enabled = true;
 			jApellidos.input.enabled = true;

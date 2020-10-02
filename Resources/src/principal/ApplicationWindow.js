@@ -53,7 +53,7 @@ function ApplicationWindow() {
 	function procesarMensajeRecibido(e){
 	
 		// Se actualizan los servicios
-		HistorialProcesos.Actualizar();
+		HistorialProcesos.Actualizar(false);
 	
 		if(isAndroid){
 			// este se ejecuta cuando la app esta en primer plano

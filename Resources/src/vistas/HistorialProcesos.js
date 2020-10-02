@@ -1,17 +1,20 @@
 
-var Actualizar = function() { 
-  
+var Actualizar = function(mostrar) { 
+  							mostrar = (typeof mostrar !== 'undefined') ?  mostrar : true;
          if(!params.isAndroid){
            Titanium.UI.iOS.appBadge = 0; 
          }
          Ti.App.Properties.setString('ActualizarListadoAsistencias','N');
-                  
-         preloader.show(contenedorHistoria);
-                  
+         Ti.API.info("inicio...");
+         if(mostrar){
+	         preloader.show(contenedorHistoria);
+         }
+         
          gridAsistencias.data = [];
          
          var peticionHTTP = Ti.Network.createHTTPClient();
          peticionHTTP.onerror = function(e)   {
+	         			Ti.API.info("line 15...");
              var resultado = this.responseText;
              Ti.API.info("*** ERROR: " + resultado );
              Utiles.Alerta( "Error de comunicación con el servidor, por favor intenta mas tarde. \n\n" +   + e.error );
@@ -21,8 +24,10 @@ var Actualizar = function() {
          };
          peticionHTTP.onload =  function() 
          {
+	         	Ti.API.info("line 25...");
 		          //Ti.API.info("*** RESULTADO: " + this.responseText );
 		          if( this.responseText == "0" ) {
+			          		Ti.API.info("line 28...");
                //Ti.App.db.execute("DELETE FROM historico_asistencias"); 
                // Ti.App.db.execute("DELETE FROM llegada_push"); 
                Ti.API.info("No hay registros por procesar..");
@@ -32,6 +37,7 @@ var Actualizar = function() {
                return false;
             }
             if( Utiles.Left(this.responseText,5) == "ERROR" ) {
+	            		Ti.API.info("line 38...");
                preloader.hide(contenedorHistoria);
                Utiles.Alerta("No se ha podido accesar al servidor, por favor intentá mas tarde. \r\r");
                gridAsistencias.data =  [];
@@ -40,10 +46,12 @@ var Actualizar = function() {
             }     
             else
             {        
+	            		Ti.API.info("line 47...");
                 var json = JSON.parse(unescape(this.responseText));        
    	            var json = json.datos;     
       		        var pos;  
                   if(json.length>0){
+	                  		Ti.API.info("line 52...");
                      contenedorHistoria.backgroundImage = null;
                      gridAsistencias.data = [];
                      for(x=0;x<json.length;x++){
@@ -51,12 +59,18 @@ var Actualizar = function() {
                      }         
                   }
                   else{
+	                  	Ti.API.info("line 60...");
                      gridAsistencias.data = [];
                      contenedorHistoria.backgroundImage = "/images/sinasistencias.png";
                   }
+                  Ti.API.info("line 64...");
+                  preloader.hide(contenedorHistoria);
+                  preloader.hide(contenedorHistoria);
+                  preloader.hide(contenedorHistoria);
                   preloader.hide(contenedorHistoria);
                   Ti.App.Properties.setString('ActualizarListadoAsistencias','N');
             }     
+            
          };
          peticionHTTP.open("POST", params.URLsiga );  
          var parametros = {  
