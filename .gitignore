@@ -3,3 +3,4 @@ build/
 build.log
 .nova/
 .DS_Store
+.liveviewapp.js
