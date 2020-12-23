@@ -231,7 +231,7 @@ function MostrarDatos(win, json) {
 	contenedor.add(Ti.UI.createView({ height: 10 }));
 
 	// Boton para registrar la cuenta
-	var btnRegistrar = new Button('Actualizar datos', params.color1, '90%');
+	var btnRegistrar = new Button('Aceptar', params.color1, '90%');
 	btnRegistrar.enabled = true; // ( json.firmado=="S" ) ? true : false;
 	btnRegistrar.addEventListener('click', function() {
 		if (jIdentificacion.input.value == '') {
@@ -298,7 +298,7 @@ function MostrarDatos(win, json) {
 			Utiles.grabarOpcion('email', jEmail.input.value);
 			var token = Utiles.obtenerOpcion('token');
 			Utiles.registrarEnServidor(token);
-				
+
 			json.firmado = 'S';
 			jNombres.input.enabled = true;
 			jApellidos.input.enabled = true;

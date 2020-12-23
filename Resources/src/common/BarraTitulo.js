@@ -8,17 +8,17 @@ function BarraTitulo( texto ) {
  	   width: Ti.UI.FILL,
  	   height: '10%'
 	});
-		
+
 	self.add( Ti.UI.createView({ bottom: 0, width: Ti.UI.FILL, height: 2, backgroundColor: params.color1 }) );
 
  var txt = Ti.UI.createLabel({
-     text: texto, 
+     text: texto.toUpperCase(),
      font: { fontFamily: params.fuente_montserrat, fontSize: 15, fontWeight: 'bold' },
      color: params.color7,
      width: 'auto',
      height: 'auto'
  });
- if(params.iPhoneX){
+ if(Utiles.hasIOSNotch()){
    txt.bottom = 18;
  }
  self.add(txt);

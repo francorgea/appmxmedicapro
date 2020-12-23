@@ -1,6 +1,6 @@
 //Application Window Component Constructor
 function GenericWindow( cerrar, textoTitulo ) {
-  
+
 
 	//create component instance
 	var self = Ti.UI.createWindow({
@@ -10,23 +10,23 @@ function GenericWindow( cerrar, textoTitulo ) {
   		exitOnClose:false,
   		fullscreen:true
 	});
-	
+
   var objBarraTitulo = require("/src/common/BarraTitulo");
   var barraTitulo    = new objBarraTitulo(textoTitulo);
-  self.add(barraTitulo);	
+  self.add(barraTitulo);
 
 	// Colocar el titulo
 	if(cerrar=="S"){
- 	 var vistaCerrar = Ti.UI.createImageView({ height: Ti.UI.FILL, width: '15%', left: 0 });  	 
- 	 var imgCerrar = Ti.UI.createImageView({ left: (params.iPhoneX ) ? 15 : 8,  width: 30, height: 30, image:  "/images/btnRegresar.png" });
+ 	 var vistaCerrar = Ti.UI.createImageView({ height: Ti.UI.FILL, width: '15%', left: 0 });
+ 	 var imgCerrar = Ti.UI.createImageView({ left: (Utiles.hasIOSNotch()) ? 15 : 8,  width: 30, height: 30, image:  "/images/btnRegresar.png" });
  	 barraTitulo.add(imgCerrar);
  	 vistaCerrar.addEventListener("click", function(){ self.close({animate:true}); });
  	 barraTitulo.add(vistaCerrar);
 	}
-	
-	
-	
-	return self; 
+
+
+
+	return self;
 
 }
 

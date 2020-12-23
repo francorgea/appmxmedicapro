@@ -1,24 +1,79 @@
 
+
+/*
+*
+* @brief  Funcion que sirve para determinar si el dispositivo cuenta con notch
+* @author Juan Carlos Salinas Ojeda
+* @return true/false
+*
+*/
+exports.hasIOSNotch = function(){
+ if( Ti.Platform.osname=="android" ){
+    return false;
+ }
+ if (
+     // iPhone X/Xs/XR
+     // iPhone X/Xs/XR/12 mini
+     Ti.Platform.displayCaps.platformWidth === 375 &&
+     Ti.Platform.displayCaps.platformHeight === 812 &&
+     (Ti.Platform.displayCaps.logicalDensityFactor === 3 || Ti.Platform.displayCaps.logicalDensityFactor === 2)) {
+     return true;
+ }
+ if (
+     // iPhone XR/XS max
+     Ti.Platform.displayCaps.platformWidth === 414 &&
+     Ti.Platform.displayCaps.platformHeight === 896 &&
+     ( Ti.Platform.displayCaps.logicalDensityFactor === 2 || Ti.Platform.displayCaps.logicalDensityFactor === 3) ) {
+     return true;
+ }
+
+ if (
+     // iPhone 12/12 Pro
+     Ti.Platform.displayCaps.platformWidth === 390 &&
+     Ti.Platform.displayCaps.platformHeight === 844 &&
+     (Ti.Platform.displayCaps.logicalDensityFactor === 2 || Ti.Platform.displayCaps.logicalDensityFactor === 3)) {
+     return true;
+ }
+
+ if (
+     // iPhone 12 Pro max
+     Ti.Platform.displayCaps.platformWidth === 428 &&
+     Ti.Platform.displayCaps.platformHeight === 926 &&
+     (Ti.Platform.displayCaps.logicalDensityFactor === 3)) {
+     return true;
+ }
+
+ return false;
+}
+
+
+/*
+*
+* @author Juan Carlos Salinas Ojeda
+* @param string
+* @return
+*
+*/
 exports.calculaUbicacionActual = function() {
-    Titanium.Geolocation.getCurrentPosition( function(e){          
+    Titanium.Geolocation.getCurrentPosition( function(e){
         try{
           latitud  = e.coords.latitude;
-          longitud = e.coords.longitude;          
-          if(indiceMapa==0){ 
+          longitud = e.coords.longitude;
+          if(indiceMapa==0){
             vistaMapa.setRegion( {latitude: latitud, longitude: longitud, latitudeDelta:0.01, longitudeDelta:0.01} );
             Ti.API.info("*** Colocando region");
             indiceMapa++;
-          }           
+          }
         }
         catch(e){
           latitud  = 0;
-          longitud = 0;          
-          if(indiceMapa==0){ 
+          longitud = 0;
+          if(indiceMapa==0){
             Ti.API.info("*** Imposible obtener la ubicacion");
             indiceMapa++;
           }
         }
-    }); 
+    });
 }
 // ==========================================================================================================
 // Funcionalidad Left y Right
@@ -62,7 +117,7 @@ exports.FechaCadena = function( fecha ) {
   fec = fec + hrs ;
   return fec;
 }
-function ObtieneMes(mes) { 
+function ObtieneMes(mes) {
    var texto="";
    switch(mes)  {
        case '01': texto = "Ene"; break;
@@ -83,7 +138,7 @@ function ObtieneMes(mes) {
 // =========================================================
 exports.obtenerOpcion = function (parametro) {
    return obtenerOpcion(parametro);
-} 
+}
 function obtenerOpcion(parametro){
    var valor;
    if(typeof(parametro)!="string"){
@@ -93,7 +148,7 @@ function obtenerOpcion(parametro){
    if(valor==null){
      valor = "";
    }
-   return valor; 
+   return valor;
 }
 // =========================================================
 exports.grabarOpcion = function( tipo, valor ) {
@@ -102,7 +157,7 @@ exports.grabarOpcion = function( tipo, valor ) {
 function grabarOpcion(tipo,valor){
  if(typeof(valor)!="string"){
    Ti.API.info("*** " + tipo + " = " + valor );
- } 
+ }
  else{
    valor = valor.trim();
    Ti.App.Properties.setString( tipo, valor );
@@ -123,7 +178,7 @@ exports.MarcarNumero = function(numero){
 }
 function MarcarNumero(numero){
   Ti.API.info("*** Marcando número: " + numero );
-  Titanium.Platform.openURL('tel:' + numero );	
+  Titanium.Platform.openURL('tel:' + numero );
 }
 // ========================================================
 exports.abrirEnlace = function(url) {
@@ -132,13 +187,13 @@ exports.abrirEnlace = function(url) {
      dialog.open({
          url: url
      });
- }   
+ }
  else{
-     Titanium.Platform.openURL(url);	  
- } 
+     Titanium.Platform.openURL(url);
+ }
  /*
  if(url!="" && url!=null) {
-   Titanium.Platform.openURL(url);	  
+   Titanium.Platform.openURL(url);
  }
  else{
    alert("No hay URL especificada");
@@ -174,8 +229,8 @@ exports.checar_bd = function() {
 	sql_crear="";
  sql_crear += "CREATE TABLE IF NOT EXISTS vehiculos (";
 	sql_crear += "id INTEGER, uid TEXT, marca TEXT, modelo TEXT, axo TEXT, placas TEXT, color TEXT,";
-	sql_crear += "PRIMARY KEY (id) )"; 
-	Ti.App.db.execute( sql_crear );    
+	sql_crear += "PRIMARY KEY (id) )";
+	Ti.App.db.execute( sql_crear );
 }
 // =======================================================================================================================
 // Obtener un UNICO ID para el dispositivo
@@ -196,12 +251,12 @@ function obtener_id() {
 // ==========================================================================================================
 // Registrar token en servidor
 // ==========================================================================================================
-exports.registrarEnServidor = function(deviceToken){ 
+exports.registrarEnServidor = function(deviceToken){
    var servidor = params.URLmobile;
    var enlace = servidor + "?appname="+params.pref+"&appversion="+params.app_version+"&deviceuid="+Utiles.obtener_id()+"&";
    enlace = enlace + "devicetoken="+deviceToken+"&devicename="+Titanium.Platform.name+"&devicemodel="+Titanium.Platform.model+"&";
-   enlace = enlace +	"cveafiliado="+Utiles.obtenerOpcion('cedula')+"&cuenta="+params.cuenta_siga+"&";   
-   enlace = enlace + "deviceversion="+Titanium.Platform.version; 
+   enlace = enlace +	"cveafiliado="+Utiles.obtenerOpcion('cedula')+"&cuenta="+params.cuenta_siga+"&";
+   enlace = enlace + "deviceversion="+Titanium.Platform.version;
    Ti.API.info("Enlace del token: ------------>"+enlace);
    var peticionHTTP = Ti.Network.createHTTPClient();
    peticionHTTP.onerror = function(e) {
@@ -211,8 +266,8 @@ exports.registrarEnServidor = function(deviceToken){
        Utiles.grabarOpcion( "servidorPush1", "OK" );
    };
    Ti.API.info("*** Enlace Push: " + enlace );
-   peticionHTTP.open("GET", enlace );  
-   peticionHTTP.send();  
+   peticionHTTP.open("GET", enlace );
+   peticionHTTP.send();
 };
 // ========================================================
 // llenar de ceros
@@ -308,12 +363,12 @@ exports.isValidDate = function(value, userFormat) {
 // ============================================================================================================
 // Function   : getLocation
 // Parametros :
-// Descripcion: Obtiene la posición actual 
+// Descripcion: Obtiene la posición actual
 // ============================================================================================================
 exports.getLocation = function(){
    Ti.API.info("*** Obteniendo la posicion actual");
    Titanium.Geolocation.getCurrentPosition(function(e){
-     try  {       
+     try  {
        longitud = e.coords.longitude;
  	     latitud  = e.coords.latitude;
 	    }
@@ -341,12 +396,12 @@ exports.ComboBox = function( titulo, arregloOpciones, boton ) {
          checked = false;
       }
       var colorTexto =  'black'  ;
-      tableData.push( {  
-           title: actual, 
-           hasCheck: checked, 
+      tableData.push( {
+           title: actual,
+           hasCheck: checked,
            color: colorTexto,
        });
-   } 
+   }
    var table = Ti.UI.createTableView({
      top: '18%',
      data: tableData,
@@ -357,7 +412,7 @@ exports.ComboBox = function( titulo, arregloOpciones, boton ) {
        winCombo.close();
    });
    winCombo.add(table);
-   winCombo.open();     
+   winCombo.open();
 }
 //
 //
@@ -371,7 +426,7 @@ exports.SeleccionarFecha = function( fecha_actual ) {
    		exitOnClose:true,
    		fullscreen:true
 	});
-	
+
 	var vista = Ti.UI.createView({
  	   layout: 'vertical',
  	   backgroundColor: 'white',
@@ -386,20 +441,20 @@ exports.SeleccionarFecha = function( fecha_actual ) {
      style:Titanium.UI.iOS.SystemButtonStyle.PLAIN,
      height:25,
      width:'auto',
- });      
- vista.add(barra);    	
+ });
+ vista.add(barra);
  var picker = Ti.UI.createPicker({
    type: Titanium.UI.PICKER_TYPE_DATE,
    selectionIndicator: true,
- });	
+ });
  vista.add(picker);
  winFecha.add(vista);
- 
+
 	winFecha.addEventListener("click", function(){
  	   winFecha.close();
 	})
  winFecha.open();
- 
+
 }
 // ===========================================================================
 // Obtiene la imagen de la calificacion
@@ -421,7 +476,7 @@ exports.imagen_estatus = function( estatus ) {
 	  case 4:
 	  case 5:  imagen = "/images/" + estatus + ".png"; break;
 	  default: imagen = "/images/0.png"; break;
-  }    
+  }
   return imagen;
 }
 exports.quitar_espacios = function(t){
