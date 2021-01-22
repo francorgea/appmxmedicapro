@@ -1,6 +1,6 @@
 
 // Variables Varias
-exports.sistema_BD  = "MiDoc";
+exports.sistema_BD  = "gelthy";
 exports.desarrollo  = "production"; // production // sandbox
 exports.app_name    = "gelthy";
 exports.app_version = "1.0.0";
