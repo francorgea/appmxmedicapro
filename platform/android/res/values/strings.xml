@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="google_app_id">1:451544106628:android:1ce4288ed268cf027ae4d1</string>
+ <string name="gcm_defaultSenderId" translatable="false">451544106628</string>
+ <string name="default_web_client_id" translatable="false">451544106628-b97v70bs0ulmhofvbmbg79j5h247le38.apps.googleusercontent.com</string>
+ <string name="firebase_database_url" translatable="false">https://mi-doc-38f45.firebaseio.com</string>
+ <string name="google_api_key" translatable="false">AIzaSyDIy1HCfoUNl73pxKCQ2QVPp_1rjn-qS_4</string>
+ <string name="project_id" translatable="false">mi-doc-38f45</string>
 </resources>
