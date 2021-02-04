@@ -17,7 +17,6 @@ function Asistencias() {
 
   var logogea = Ti.UI.createImageView({
    image: 'images/logogea.png',
-   //height: '15%',
    width: '25%',
    top: '6%',
    left: 15,
@@ -28,7 +27,6 @@ function Asistencias() {
 
   var logo = Ti.UI.createImageView({
 	  			image: 'images/logo.png',
-	  			// height: '15%',
 	  			width: '25%',
 	  			top: '5%',
 	  			right: 15,
