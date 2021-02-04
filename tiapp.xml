@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.geainternacional.midoc</id>
     <name>gelthy</name>
-    <version>1.0.0</version>
+    <version>100</version>
     <publisher>oswaldotobonaguilar</publisher>
     <url>http://www.geainternacional.com</url>
     <description>App para solicitar asistencias</description>
