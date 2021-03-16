@@ -20,7 +20,8 @@ function Asistencias() {
    width: '25%',
    top: '6%',
    left: 15,
-   zIndex: 999,
+   zIndex: 999999999,
+   borderColor: "transparent",
   });
   contenedor.add(logogea);
 
@@ -30,14 +31,16 @@ function Asistencias() {
 	  			width: '25%',
 	  			top: '5%',
 	  			right: 15,
-      zIndex: 999,
+      zIndex: 999999999,
+      borderColor: "transparent",
   });
   contenedor.add(logo);
 
   var scrollBotones = Ti.UI.createScrollView({
-	     top: '52%',
+	     top: '50%',
 	     height: Ti.UI.FILL,
 	     width: Ti.UI.FILL,
+//	     borderColor:"red",
   });
   contenedor.add(scrollBotones);
 

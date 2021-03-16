@@ -13,10 +13,10 @@ function Opciones( mainView, winPrincipal ) {
   contenedor.add(barraTitulo);	
 
 
- var altoRenglonConfig = 70;
+ var altoRenglonConfig = 60;
 
  // Separador
- contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 20, backgroundColor: params.color10   }));
+ contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 5, backgroundColor: params.color10   }));
  
  // Perfil
  var vistaPerfil = Ti.UI.createView({
@@ -37,44 +37,8 @@ function Opciones( mainView, winPrincipal ) {
  });
  contenedor.add(vistaPerfil);
 
- // Vehículos
- /*
- var vistaVehiculos = Ti.UI.createView({
-     width: Ti.UI.FILL,
-     height: altoRenglonConfig,     
- });
- vistaVehiculos.addEventListener("click", function(){
- });
- vistaVehiculos.add(Ti.UI.createImageView({ image: '/images/icoVehiculos.png', height: 20, width: 20, left: '5%' }));
- vistaVehiculos.add(Ti.UI.createImageView({ image: '/images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '2%' }));
- vistaVehiculos.add(Ti.UI.createLabel({ text: "Mis Vehículos", font: { fontFamily: params.fuente_primaria, fontSize: 13 },color: params.color6, left: '15%', width: 'auto', height: 'auto' 	}));
- vistaVehiculos.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
- vistaVehiculos.addEventListener("click", function(){
-    var win = new GenericWindow( "S", "Mis vehículos" ) ;
-	   var vehiculos = require("src/vistas/vehiculos");
-	   vehiculos.Mostrar( win );
-    win.open();             
- }); 
- contenedor.add(vistaVehiculos);
- */
-
  // Separador
- contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 20, backgroundColor: params.color10   }));
-
- // Términos y condiciones
- var vistaTerminos = Ti.UI.createView({
-     width: Ti.UI.FILL,
-     height: altoRenglonConfig,     
- });
- vistaTerminos.addEventListener("click", function(){
-     Utiles.abrirEnlace(params.pagina_tyc);
- });
- vistaTerminos.add(Ti.UI.createImageView({ image: '/images/icoTerminos.png', height: 20, width: 20, left: '5%' }));
- vistaTerminos.add(Ti.UI.createImageView({ image: '/images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '2%' }));
- vistaTerminos.add(Ti.UI.createLabel({ text: "Términos y Condiciones", font: { fontFamily: params.fuente_primaria, fontSize: 13 },color: params.color6, left: '15%', width: 'auto', height: 'auto' 	}));
- vistaTerminos.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
- contenedor.add(vistaTerminos);
-
+ contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 5, backgroundColor: params.color10   }));
 
  // Políticas de privacidad
  var vistaPP = Ti.UI.createView({
@@ -89,10 +53,51 @@ function Opciones( mainView, winPrincipal ) {
  vistaPP.add(Ti.UI.createLabel({ text: "Políticas de Privacidad", font: { fontFamily: params.fuente_primaria, fontSize: 13 },color: params.color6, left: '15%', width: 'auto', height: 'auto' 	}));
  vistaPP.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
  contenedor.add(vistaPP);
-
+	
+	// Términos y condiciones producto GOLD
+ var vistaTerminosGold = Ti.UI.createView({
+     width: Ti.UI.FILL,
+     height: altoRenglonConfig,     
+ });
+ vistaTerminosGold.addEventListener("click", function(){
+     Utiles.abrirEnlace("https://www.geainternacional.com/mx/gelthy/ANEXO_C_PLAN_BLACK.pdf");
+ });
+ vistaTerminosGold.add(Ti.UI.createImageView({ image: '/images/icoTerminos.png', height: 20, width: 20, left: '5%' }));
+ vistaTerminosGold.add(Ti.UI.createImageView({ image: '/images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '2%' }));
+ vistaTerminosGold.add(Ti.UI.createLabel({ text: "Términos y Condiciones GOLD", font: { fontFamily: params.fuente_primaria, fontSize: 13 },color: params.color6, left: '15%', width: 'auto', height: 'auto' 	}));
+ vistaTerminosGold.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
+ contenedor.add(vistaTerminosGold);
+	
+	// Términos y condiciones producto BLACK
+ var vistaTerminosBlack = Ti.UI.createView({
+     width: Ti.UI.FILL,
+     height: altoRenglonConfig,     
+ });
+ vistaTerminosBlack.addEventListener("click", function(){
+     Utiles.abrirEnlace("https://www.geainternacional.com/mx/gelthy/ANEXO_B_PLAN_PLATINUM.pdf");
+ });
+ vistaTerminosBlack.add(Ti.UI.createImageView({ image: '/images/icoTerminos.png', height: 20, width: 20, left: '5%' }));
+ vistaTerminosBlack.add(Ti.UI.createImageView({ image: '/images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '2%' }));
+ vistaTerminosBlack.add(Ti.UI.createLabel({ text: "Términos y Condiciones BLACK", font: { fontFamily: params.fuente_primaria, fontSize: 13 },color: params.color6, left: '15%', width: 'auto', height: 'auto' 	}));
+ vistaTerminosBlack.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
+ contenedor.add(vistaTerminosBlack);
+	
+	// Términos y condiciones producto PLATINO
+ var vistaTerminosPlatino = Ti.UI.createView({
+     width: Ti.UI.FILL,
+     height: altoRenglonConfig,     
+ });
+ vistaTerminosPlatino.addEventListener("click", function(){
+     Utiles.abrirEnlace("https://www.geainternacional.com/mx/gelthy/ANEXO_A_PLAN_GOLD.pdf");
+ });
+ vistaTerminosPlatino.add(Ti.UI.createImageView({ image: '/images/icoTerminos.png', height: 20, width: 20, left: '5%' }));
+ vistaTerminosPlatino.add(Ti.UI.createImageView({ image: '/images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '2%' }));
+ vistaTerminosPlatino.add(Ti.UI.createLabel({ text: "Términos y Condiciones PLATINO", font: { fontFamily: params.fuente_primaria, fontSize: 13 },color: params.color6, left: '15%', width: 'auto', height: 'auto' 	}));
+ vistaTerminosPlatino.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
+ contenedor.add(vistaTerminosPlatino);
 
  // Separador
- contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 20, backgroundColor: params.color10   }));
+ contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 5, backgroundColor: params.color10   }));
 
 
  // Página Web
@@ -127,10 +132,6 @@ function Opciones( mainView, winPrincipal ) {
  vistaInfo.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1  }));
  contenedor.add(vistaInfo);
 
- // Separador
- contenedor.add(Ti.UI.createView({ width: Ti.UI.FILL, height: 20, backgroundColor: params.color10   }));
-
-  
   return contenedor;
 }
 module.exports = Opciones;

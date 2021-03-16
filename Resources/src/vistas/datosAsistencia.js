@@ -350,6 +350,7 @@ function Proceso_Cancelacion_Asistencia( win, expediente, winChat ) {
   peticionHTTP.onerror = function() {
 	  			var responseText = this.responseText;
 	  			Ti.API.info("Respuesta onerror: " + responseText);
+	  			Utiles.Alerta(responseText);
 	  			preloader.hide(win);
       Utiles.Alerta( "Error de comunicación con el servidor, por favor intentá mas tarde. \r\r");
   };
@@ -408,6 +409,8 @@ function Proceso_Cancelacion_Asistencia( win, expediente, winChat ) {
          bdg: 0, // Enc(Titanium.UI.iPhone.getAppBadge())
         test: 1
   }; 
+  Ti.API.info(" url |||||||||||||||||" +params.URLsiga);
+  Ti.API.info(" parametros |||||||||||||||||" +JSON.stringify(parametros));
   peticionHTTP.send(parametros);  
 
 

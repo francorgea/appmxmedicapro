@@ -67,7 +67,7 @@ exports.sonido_soltar = "pop2.wav";
 
 // email y links
 exports.email_contacto   = "sistemas_mobile@geainternacional.com";
-exports.pagina_web       = "http://www.midoc.one";
+exports.pagina_web       = "http://www.gelthy.io";
 exports.pagina_tyc       = "https://www.geainternacional.com/mx/gelthy/tyc.html";
 exports.pagina_pp        = "https://www.geainternacional.com/mx/gelthy/pp.html";
 

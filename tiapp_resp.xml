@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.geainternacional.midoc</id>
-    <name>gelthy</name>
-    <version>101</version>
+    <name>Mi Doc</name>
+    <version>1.0</version>
     <publisher>oswaldotobonaguilar</publisher>
     <url>http://www.geainternacional.com</url>
     <description>App para solicitar asistencias</description>
@@ -11,12 +11,12 @@
     <fullscreen>true</fullscreen>
     <navbar-hidden>true</navbar-hidden>
     <analytics>false</analytics>
-    <guid>128ca59e-0313-4498-9bbb-c955987aad73</guid>
+    <guid>063179aa-1915-4b17-9666-6593b9a46231</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
         <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
-        <default-background-color>#ffffff</default-background-color>
+        <default-background-color>#cedff7</default-background-color>
         <use-app-thinning>true</use-app-thinning>
         <plist>
             <dict>
@@ -64,9 +64,9 @@
         </plist>
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-      <manifest android:versionCode="101" xmlns:android="http://schemas.android.com/apk/res/android"/>
-					      <uses-sdk android:minSdkVersion="19"/>
-					      <uses-permission android:name="android.permission.CAMERA"/>
+      <manifest android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android"/>
+                <uses-sdk android:minSdkVersion="1"/>
+                <uses-permission android:name="android.permission.CAMERA"/>
             <uses-permission android:name="android.permission.CALL_PHONE"/>
             <uses-permission android:name="android.permission.INTERNET"/>
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -74,11 +74,11 @@
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
             <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
             <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-											<application android:theme="@style/Theme.CustomActionBar">
+                      <application android:theme="@style/Theme.CustomActionBar">
                 <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA0yvLNAcVGuicnMUZYvfVYOBMQUmyDcGg"/>
-               	<meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
-               	<meta-data android:name="google_analytics_adid_collection_enabled" android:value="false"/>
-               	<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notificationicon"/>
+                 <meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
+                 <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false"/>
+                 <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notificationicon"/>
             </application>
        </manifest>
     </android>
@@ -95,6 +95,6 @@
         <target device="ipad">false</target>
         <target device="iphone">true</target>
     </deployment-targets>
-    <sdk-version>9.2.2.GA</sdk-version>
-    <property name="appc-app-id" type="string">5f34dbb2535a542b36187f32</property>
+    <sdk-version>9.0.1.GA</sdk-version>
+    <property name="appc-app-id" type="string">5f63dee3d2f75c237f55e55b</property>
 </ti:app>

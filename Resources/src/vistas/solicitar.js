@@ -256,6 +256,9 @@ function SolicitarMuestraVentana(win, tituloAsistencia, arregloOpciones, EsAsist
               }
         }       
      };
+     Ti.API.info(" url |||||||||||||||||" +params.URLsiga);
+					Ti.API.info(" parametros |||||||||||||||||" +JSON.stringify(parametros));
+     
      peticionHTTP.open("POST", params.URLsiga );  
      peticionHTTP.send(parametros);  
    

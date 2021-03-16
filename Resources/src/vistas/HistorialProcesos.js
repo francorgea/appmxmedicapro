@@ -85,6 +85,7 @@ var Actualizar = function(mostrar) {
                 bdg: 0,
                 test:1
          };  
+         Ti.API.info(parametros);
          peticionHTTP.send(parametros);      
   
     
