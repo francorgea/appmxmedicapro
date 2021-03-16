@@ -16,22 +16,19 @@ function Asistencias() {
 
 
   var logogea = Ti.UI.createImageView({
-   image: 'images/logogea.png',
-   width: '25%',
-   top: '6%',
-   left: 15,
-   zIndex: 999999999,
-   borderColor: "transparent",
+      image: '/images/logogea.png',
+      width: '25%',
+      top: '6%',
+      left: 15,      
   });
   contenedor.add(logogea);
 
 
   var logo = Ti.UI.createImageView({
-	  			image: 'images/logo.png',
+	  			image: '/images/logo.png',
 	  			width: '25%',
 	  			top: '5%',
 	  			right: 15,
-      zIndex: 999999999,
       borderColor: "transparent",
   });
   contenedor.add(logo);
@@ -40,7 +37,6 @@ function Asistencias() {
 	     top: '50%',
 	     height: Ti.UI.FILL,
 	     width: Ti.UI.FILL,
-//	     borderColor:"red",
   });
   contenedor.add(scrollBotones);
 

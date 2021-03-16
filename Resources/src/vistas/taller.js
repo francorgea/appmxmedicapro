@@ -225,7 +225,7 @@ function AgregarAvance( win, indice, contenedor, datos, siniestro ){
   vistaSiniestro.add(tipo_gestion);  
   vistaSiniestro.add(Ti.UI.createView({ id_registro: datos.id_registro,bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color10, borderWidth: 1 }));
   if(datos.indicador_tipo_gestion=="AR" ){
-    vistaSiniestro.add(  Ti.UI.createImageView({ id_registro: datos.id_registro,right: 10, width: 25, height: 25, image: "images/icoGaleria.png"  })   );
+    vistaSiniestro.add(  Ti.UI.createImageView({ id_registro: datos.id_registro,right: 10, width: 25, height: 25, image: "/images/icoGaleria.png"  })   );
     vistaSiniestro.addEventListener("click", function(e){
          Ti.API.info("*** Siniestro  : " + siniestro );
          Ti.API.info("*** id_registro: " + e.source.id_registro );

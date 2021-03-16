@@ -25,7 +25,7 @@ function Mostrar(win){
     contenedor.add(Ti.UI.createView({ height: 20 }));
 
   		var logo = Ti.UI.createImageView({
-  	  			image: 'images/logo.png',
+  	  			image: '/images/logo.png',
   	  			width: '31%',
   	  			zIndex: 9999
     });
@@ -44,7 +44,7 @@ function Mostrar(win){
     contenedor.add(Ti.UI.createView({ height: 40 }));
 
     var logogea = Ti.UI.createImageView({
-     image: 'images/logogea.png',
+     image: '/images/logogea.png',
      width: '31%',
      zIndex: 9999
     });

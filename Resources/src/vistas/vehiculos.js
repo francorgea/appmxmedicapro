@@ -232,7 +232,7 @@ function agregarAutoListado(win, tablaDatos, json ) {
        height: Ti.UI.FILL
    });
    row.add(vistaRenglon);
-   vistaRenglon.add(Ti.UI.createImageView({ image: 'images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '5%' }));
+   vistaRenglon.add(Ti.UI.createImageView({ image: '/images/imgFlechaDerechaGris.png', height: 20, width: 20, right: '5%' }));
    vistaRenglon.add(Ti.UI.createView({ bottom: 0, width: '95%', right: 0, height: 1, borderColor: params.color13, borderWidth: 1 }));
    
    var texto = Ti.UI.createLabel({

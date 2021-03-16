@@ -4,7 +4,7 @@ function Historial( mainView ) {
   contenedorHistoria = Ti.UI.createView({
       width: Ti.UI.FILL,
       height: Ti.UI.FILL,   
-       backgroundImage: 'images/sinasistencias.png',
+       backgroundImage: '/images/sinasistencias.png',
        //borderColor: 'blue'   
   });  
   
